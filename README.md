@@ -1,178 +1,158 @@
-# Project Nemo
-Project Nemo — Proposal Website
+# Project Nemo — Proposal Website
 
-Project Nemo is an interactive, animated, and fully personalized proposal website designed with HTML, CSS, and JavaScript.
-It includes dynamic UI behavior, music playback, Firebase logging, smooth animations, and a passcode-protected entry system.
+Project Nemo is an interactive, animated, and fully personalized proposal website built with HTML, CSS, and JavaScript.  
+It combines dynamic UI behavior, playful interactions, background music, and a passcode-protected entry system to create a memorable experience.
 
-Features
-1. Passcode-Protected Entry
+---
 
-The website begins with a landing screen.
+## 🌟 Features
 
-Access is granted only after entering the correct passcode.
+### **1. Passcode-Protected Entry**
+- The site opens with a landing screen.
+- Users must enter a correct passcode to proceed.
+- Once verified, the page title instantly updates to **“I love you apoorva”**.
 
-On successful entry, the page title dynamically changes to “I love you apoorva”.
+### **2. Personalized Visual Experience**
+- Modern UI using gradient backgrounds and Poppins font.
+- Multiple sections containing images, compliments, memories, and flirty notes.
+- Smooth animations and transitions throughout the page.
 
-2. Personalized Visual Experience
+### **3. Interactive Proposal Buttons**
+- **Yes** button triggers:
+  - Confetti effect  
+  - Floating hearts  
+  - Transition to a final “accepted” screen  
+  - Firebase entry logging  
 
-Custom gradients and modern UI styling using the Poppins font.
+- **No** button:
+  - Moves to random positions to avoid clicks  
+  - Displays playful popup messages  
+  - Tracks the number of “No” attempts  
 
-Multiple sections with images, compliments, and flirty notes.
+### **4. Analytics Tracking**
+The website logs:
+- Time spent on each section  
+- Section view count  
+- Time spent reading each paragraph  
+- Total time on the page  
+- Browser metadata  
+- Passcode failure count  
+- No-button click attempts  
 
-Designed as a multi-section scrolling page with animations and photo galleries.
+All data is recorded in Firebase when the user clicks **Yes**.
 
-3. Interactive “Yes / No” Proposal
+### **5. Anti-Inspection Security**
+To avoid casual inspection:
+- Right-click is disabled  
+- F12 is blocked  
+- Ctrl+Shift+I / J / C disabled  
+- Ctrl+U disabled  
 
-A “Yes” button triggers:
+### **6. Background Music**
+- Auto-plays when access is granted  
+- Starts at a specific timestamp (25 seconds)
 
-Confetti animation
+---
 
-Floating hearts
+## 🛠️ Tech Stack
 
-Transition to a dedicated success screen
+| Component | Technology |
+|----------|------------|
+| Frontend | HTML5, CSS3, JavaScript |
+| Animations | CSS Keyframes, Canvas-Confetti |
+| Fonts | Google Fonts (Poppins) |
+| Database | Firebase Realtime Database |
+| Media | Local images + audio assets |
 
-Firebase logging of the response and page interaction data
+---
 
-A “No” button:
+## 📁 Project Structure
 
-Moves away on hover
-
-Displays playful popup messages
-
-Counts how many times it was clicked
-
-4. Analytics Tracking
-
-The website tracks:
-
-Time spent on each section
-
-Number of times each section was viewed
-
-Time spent reading paragraphs
-
-Total time on page
-
-Passcode failure count
-
-User’s browser metadata
-
-This data is pushed into Firebase Realtime Database on the Yes response.
-
-5. Anti-Inspection Scripts
-
-Blocks:
-
-Right-click
-
-F12
-
-Ctrl+Shift+I / J / C
-
-Ctrl+U
-
-(to prevent casual users from accessing source files)
-
-6. Background Music
-
-Auto-plays at a specified timestamp after successful passcode entry.
-
-Tech Stack
-Component	Technology Used
-Frontend	HTML5, CSS3, JavaScript
-Animations	CSS Keyframes, Canvas Confetti
-Fonts	Google Fonts (Poppins)
-Database / Logs	Firebase Realtime Database
-Media Assets	Local image + audio files
-Project Structure
+```
 /
 |-- index.html
+|-- README.md
 |-- res/
 |   |-- song.mp3
 |   |-- photo-1.png
 |   |-- photo-2.png
 |   |-- photo-3.png
 |   |-- ...
-|-- README.md
+```
 
+All images and audio files reside inside the `res/` directory.
 
-Images and audio are stored in the res/ directory.
+---
 
-How It Works
-1. User opens the site
+## 🚀 How It Works
 
-The landing screen appears with a button titled Open.
+### **1. Landing Page**
+The user first sees a welcome screen with an **Open** button.
 
-2. User enters passcode
+### **2. Passcode Authentication**
+- If the passcode is correct:
+  - Landing page hides  
+  - Music plays from 25 seconds  
+  - Full website becomes visible  
+  - Page title changes  
+- If incorrect:
+  - Error alert appears  
+  - Failure count increments  
 
-If correct:
+### **3. Scrolling and Interaction**
+Each section’s visibility and duration are tracked for analytics.
 
-The landing screen disappears
+### **4. Proposal Logic**
+- **Yes** → Triggers animations + logs data to Firebase + final screen  
+- **No** → Button escapes + fun teasing popups  
 
-Background music starts at 25 seconds
+---
 
-Main content loads
+## 📦 Setup Instructions
 
-Page title changes
-
-If incorrect:
-
-Access denied
-
-Failure count increments
-
-3. User scrolls
-
-Each section triggers view and timing analytics.
-
-4. User answers the proposal
-
-Yes → animations + data logged + final page
-
-No → button escapes + funny message
-
-Setup Instructions
-
-Clone this repository:
-
+### **1. Clone the repository**
+```bash
 git clone https://github.com/your-username/project-nemo.git
 cd project-nemo
+```
 
+### **2. Add Firebase configuration**
+Insert your Firebase object here inside `index.html`:
+```javascript
+const firebaseConfig = { ... };
+```
 
-Add your Firebase configuration inside index.html under:
+### **3. Add your images and audio**
+Place all required files into:
+```
+/res
+```
 
-const firebaseConfig = { ... }
+### **4. Deployment Options**
+You may deploy using:
+- GitHub Pages  
+- Netlify  
+- Vercel  
+- Firebase Hosting  
 
+---
 
-Place your images and audio in the res/ folder.
+## 🌐 Deploying to GitHub Pages
 
-Deploy using any static hosting option:
+1. Commit all project files  
+2. In GitHub → **Settings**  
+3. Go to **Pages**  
+4. Select branch: `main`  
+5. Set build folder to `/root`  
+6. Save  
 
-GitHub Pages
+Your live site will be published automatically.
 
-Deployment (GitHub Pages)
+---
 
-Commit all files
+## 📜 License
 
-Go to Repository → Settings → Pages
+This project is personal and intended for private use only. Redistribution or commercial use is not permitted.
 
-Select branch: main
+---
 
-Select folder: /root
-
-Save
-The site will be available in a few minutes.
-
-License
-
-This project is personal and not intended for reuse, redistribution, or commercial purposes.
-
-If you want, I can also create:
-
-A banner for the README
-
-A GitHub Pages-optimized version
-
-A cleaner minified HTML/CSS/JS bundle
-
-A separate config.js file to externalize settings
