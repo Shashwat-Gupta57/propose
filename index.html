@@ -1,6 +1,7 @@
 <audio id="bg-music" src="res/song.mp3"></audio>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,53 +16,61 @@
             color: #333;
             overflow-x: hidden;
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
+
         .hero {
             text-align: center;
             padding: 100px 20px;
             background: linear-gradient(135deg, #ff9a9e, #fecfef);
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             margin-bottom: 50px;
             position: relative;
         }
+
         .hero img {
             width: 200px;
             height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
         }
+
         .hero h1 {
             font-size: 3em;
             margin: 0;
             color: #fff;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
+
         .hero p {
             font-size: 1.2em;
             color: #fff;
             margin: 10px 0;
         }
+
         .section {
-            background: rgba(255,255,255,0.8);
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 50px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             animation: fadeIn 1s ease-in;
         }
+
         .section h2 {
             color: #ff6b9d;
             font-size: 2em;
             margin-bottom: 20px;
             text-align: center;
         }
+
         .section .photos {
             display: flex;
             justify-content: center;
@@ -69,52 +78,60 @@
             flex-wrap: wrap;
             margin-bottom: 20px;
         }
+
         .section img {
             width: 200px;
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
+
         .compliments {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
+
         .compliment {
             background: linear-gradient(135deg, #ffeaa7, #fab1a0);
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
+
         .compliment:hover {
             transform: scale(1.05);
         }
+
         .proposal {
             text-align: center;
             background: linear-gradient(135deg, #a8edea, #fed6e3);
             border-radius: 20px;
             padding: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             position: relative;
         }
+
         .proposal h2 {
             font-size: 2.5em;
             color: #fff;
             margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
+
         .proposal p {
             font-size: 1.2em;
             color: #fff;
             margin-bottom: 30px;
         }
-.section.center-img img {
-    display: block;
-    margin: 0 auto 20px auto;
-}
+
+        .section.center-img img {
+            display: block;
+            margin: 0 auto 20px auto;
+        }
 
         .buttons {
             display: flex;
@@ -122,6 +139,7 @@
             gap: 100px;
             flex-wrap: wrap;
         }
+
         button {
             padding: 15px 30px;
             font-size: 1.2em;
@@ -129,25 +147,30 @@
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             min-width: 150px;
         }
+
         #yes-btn {
             background: linear-gradient(45deg, #ff6b9d, #c44569);
             color: white;
         }
+
         #yes-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
+
         #no-btn {
             background: linear-gradient(45deg, #74b9ff, #0984e3);
             color: white;
             position: relative;
         }
+
         #no-btn:hover {
             transform: scale(1.1);
         }
+
         .final-page {
             display: none;
             position: absolute;
@@ -155,32 +178,36 @@
             left: 0;
             width: auto;
             height: auto;
-	    min-height: 100vh;
-    	    overflow-y: auto;
+            min-height: 100vh;
+            overflow-y: auto;
             background: linear-gradient(135deg, #ffe6f0, #ffb3ba);
             z-index: 1000;
             text-align: center;
             padding: 100px 20px;
             animation: fadeIn 1s ease-in;
         }
+
         .final-page h1 {
             font-size: 3em;
             color: #fff;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
+
         .final-page p {
             font-size: 1.5em;
             color: #fff;
             margin: 20px 0;
         }
+
         .final-page img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             margin: 20px;
         }
+
         .hearts {
             position: absolute;
             top: 0;
@@ -190,65 +217,267 @@
             pointer-events: none;
             overflow: hidden;
         }
+
         .heart {
             position: absolute;
             color: #ff6b9d;
             font-size: 2em;
             animation: float 3s linear infinite;
         }
+
         @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         @keyframes wiggle {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-5deg); }
-            75% { transform: rotate(5deg); }
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(-5deg);
+            }
+
+            75% {
+                transform: rotate(5deg);
+            }
         }
+
         .wiggle {
             animation: wiggle 0.5s ease-in-out;
         }
+
         .popup {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: rgba(255,255,255,0.9);
+            background: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             z-index: 1001;
             display: none;
             font-size: 1.2em;
             color: #333;
         }
+
         .flirty-note {
             background: #fff;
             border-radius: 10px;
             padding: 15px;
             margin: 10px 0;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             font-style: italic;
             text-align: center;
         }
+
+        #love-meter {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 6px 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            font-size: 0.8em;
+            z-index: 1500;
+        }
+
+        #love-meter .label {
+            color: #c44569;
+            font-weight: 600;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+
+        #love-meter .bar {
+            width: 140px;
+            height: 8px;
+            border-radius: 10px;
+            background: #ffe6f0;
+            overflow: hidden;
+        }
+
+        #love-meter .fill {
+            display: block;
+            height: 100%;
+            width: 0%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #ff6b9d, #ff9a9e);
+            transition: width 0.3s ease;
+        }
+
+        .click-heart {
+            position: fixed;
+            font-size: 1.4em;
+            pointer-events: none;
+            animation: clickHeartFloat 1s ease-out forwards;
+        }
+
+        @keyframes clickHeartFloat {
+            0% {
+                transform: translateY(0) scale(0.8);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-60px) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        #open-heart {
+            font-size: 0px;
+            text-align: center;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: heartOpen 2s ease-out forwards;
+        }
+
+        @keyframes heartOpen {
+            0% {
+                font-size: 0px;
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            60% {
+                font-size: 80px;
+                opacity: 1;
+                transform: scale(1.2);
+            }
+
+            100% {
+                font-size: 60px;
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Carousel container */
+        #carousel {
+            width: 400px;
+            /* 50% bigger than your old 200px images */
+            height: 300px;
+            margin: 40px auto;
+            position: relative;
+            overflow: visible;
+            perspective: 1000px;
+        }
+
+        /* Track that rotates */
+        .carousel-track {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            /* animation: spin 12s linear infinite; */
+            animation: none;
+        }
+
+        /* All images */
+        .carousel-img {
+            width: 220px;
+            /* 50% bigger */
+            height: 220px;
+            object-fit: cover;
+            border-radius: 20px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+
+        /* 3D rotation animation */
+        @keyframes spin {
+            from {
+                transform: rotateY(0deg);
+            }
+
+            to {
+                transform: rotateY(360deg);
+            }
+        }
     </style>
 </head>
+
 <body>
-<!-- Landing Page -->
-<div id="landing-page" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#ffe6f0;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:2000;">
-    <h1 style="font-family:'Poppins',sans-serif;color:#c44569;text-align:center;margin-bottom:30px;">Welcome To The Website 🚀</h1>
-    <button id="launch-btn" style="padding:20px 40px;font-size:1.5em;border:none;border-radius:50px;background:linear-gradient(45deg,#ff6b9d,#c44569);color:white;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,0.2);">Open</button>
-</div>
+    <!-- Landing Page -->
+    <div id="landing-page"
+        style="position:fixed;top:0;left:0;width:100%;height:100%;background:#ffe6f0;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:2000;">
+        <h1 style="font-family:'Poppins',sans-serif;color:#c44569;text-align:center;margin-bottom:30px;">Welcome To The
+            Website 🚀</h1>
+        <button id="launch-btn"
+            style="padding:20px 40px;font-size:1.5em;border:none;border-radius:50px;background:linear-gradient(45deg,#ff6b9d,#c44569);color:white;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,0.2);">Open</button>
+    </div>
 
     <div class="container">
         <section class="hero">
             <img src="res/photo-1.png" alt="Apoorva">
-            <h1>Hey Apoorva, My Flirty Mard! 💕</h1>
-            <p>From your cheeky gharwali Sarvagy, who can't stop staring at your dusky glow and dreaming of your 5'5" of perfection. I'm 5'7" of pure flirtation – ready to sweep you off your feet? 😘</p>
+            <!-- In hero section, change h1 to: -->
+            <h1 id="hero-title" data-text="Hey Apoorva, My Flirty Mard! 💕"></h1>
+
+            <p>From your cheeky gharwali Sarvagy, who can't stop staring at your dusky glow and dreaming of your 5'5" of
+                perfection. I'm 5'7" of pure flirtation – ready to sweep you off your feet? 😘</p>
+        </section>
+
+        <!-- Just inside <body>, after bg-music -->
+        <div id="love-meter">
+            <div class="label">Love Meter ❤️</div>
+            <div class="bar"><span class="fill"></span></div>
+        </div>
+
+
+
+
+
+        <section class="section">
+            <h2>What I Love Most About You 💖</h2>
+            <div class="compliments">
+                <div class="compliment">
+                    <p>Your dusky skin is like a sunset I never want to end – mesmerizing and warm. 🌅</p>
+                </div>
+                <div class="compliment">
+                    <p>Your humor? It's the spark that lights up my world, making every moment hilarious and
+                        heartwarming. 😂❤️</p>
+                </div>
+                <div class="compliment">
+                    <p>At 5'5", you're the perfect height for me to whisper sweet nothings into your ear. 😉</p>
+                </div>
+                <div class="compliment">
+                    <p>Your smile could melt the coldest heart – and mine's already yours. 😍</p>
+                </div>
+                <div class="compliment">
+                    <p>Being with you feels like a flirty adventure every day. Let's make it forever! 🌟</p>
+                </div>
+                <div class="compliment">
+                    <p>Your charm is irresistible – I'm hooked, line and sinker. 🪝💕</p>
+                </div>
+            </div>
         </section>
 
 
@@ -256,333 +485,445 @@
 
 
 
-        <section class="section">
-    <h2>What I Love Most About You 💖</h2>
-    <div class="compliments">
-        <div class="compliment">
-            <p>Your dusky skin is like a sunset I never want to end – mesmerizing and warm. 🌅</p>
-        </div>
-        <div class="compliment">
-            <p>Your humor? It's the spark that lights up my world, making every moment hilarious and heartwarming. 😂❤️</p>
-        </div>
-        <div class="compliment">
-            <p>At 5'5", you're the perfect height for me to whisper sweet nothings into your ear. 😉</p>
-        </div>
-        <div class="compliment">
-            <p>Your smile could melt the coldest heart – and mine's already yours. 😍</p>
-        </div>
-        <div class="compliment">
-            <p>Being with you feels like a flirty adventure every day. Let's make it forever! 🌟</p>
-        </div>
-        <div class="compliment">
-            <p>Your charm is irresistible – I'm hooked, line and sinker. 🪝💕</p>
-        </div>
-    </div>
-</section>
 
-
-
-
-
-
-
-<section class="section center-img">
-    <h2>That Day in the Park I'll Never Forget 🌳</h2>
-    <p>Remember that park day, Apoorva? You were teasing me with your laughs, and I was falling head over heels for your dusky allure. You called me your 'aurat' that day – little did you know, I was already yours! 😏</p>
-    <img src="res/photo-2.png" alt="Park Meetup">
-    <div class="flirty-note">P.S. Your eyes sparkled more than the stars that night. 🌟</div>
-</section>
+        <section class="section center-img">
+            <h2>That Day in the Park I'll Never Forget 🌳</h2>
+            <p>Remember that park day, Apoorva? You were teasing me with your laughs, and I was falling head over heels
+                for your dusky allure. You called me your 'aurat' that day – little did you know, I was already yours!
+                😏</p>
+            <img src="res/photo-2.png" alt="Park Meetup">
+            <div class="flirty-note">P.S. Your eyes sparkled more than the stars that night. 🌟</div>
+        </section>
 
 
         <section class="section center-img">
-    <h2>Shashwat’s Birthday: Where the Magic Sparked 🎉</h2>
-    <p>At Shashwat’s bash, you were the flirty queen, my mard! Your jokes had me blushing, and I couldn't resist your charm. This group pic? It's our start to something epic. (I was secretly planning to steal your heart then!) 😉</p>
-    <img src="res/photo-11.jpg" alt="Group Photo">
-    <div class="flirty-note">Your laughter is my favorite sound – let's make more music together. 🎶</div>
-</section>
+            <h2>Shashwat’s Birthday: Where the Magic Sparked 🎉</h2>
+            <p>At Shashwat’s bash, you were the flirty queen, my mard! Your jokes had me blushing, and I couldn't resist
+                your charm. This group pic? It's our start to something epic. (I was secretly planning to steal your
+                heart then!) 😉</p>
+            <img src="res/photo-11.jpg" alt="Group Photo">
+            <div class="flirty-note">Your laughter is my favorite sound – let's make more music together. 🎶</div>
+        </section>
 
 
         <section class="section">
-    <h2>Little Moments That Made Me Fall for You 😘</h2>
-    <div class="photos">
-        <img src="res/photo-3.png" alt="Apoorva">
-        <img src="res/photo-4.png" alt="Apoorva">
-    </div>
-    <p>These pics capture your playful side, Apoorva – the way you light up any room with your dusky charm. I'm addicted to your vibe! 💃</p>
-    <div class="flirty-note">If flirting was an art, you'd be Picasso – creative, bold, and utterly captivating. 🎨</div>
-</section>
+            <h2>Little Moments That Made Me Fall for You 😘</h2>
+            <div class="photos">
+                <img src="res/photo-3.png" alt="Apoorva">
+                <img src="res/photo-4.png" alt="Apoorva">
+            </div>
+            <p>These pics capture your playful side, Apoorva – the way you light up any room with your dusky charm. I'm
+                addicted to your vibe! 💃</p>
+            <div class="flirty-note">If flirting was an art, you'd be Picasso – creative, bold, and utterly captivating.
+                🎨</div>
+        </section>
 
 
         <section class="section">
-    <h2>More Memories I Keep Close to My Heart 💑</h2>
-    <div class="photos">
-        <img src="res/photo-5.png" alt="Apoorva">
-        <img src="res/photo-6.png" alt="Apoorva">
-    </div>
-    <p>Look at you, my mard – owning every moment with that 5'5" confidence. My fair skin might be jealous of your glow! 😜</p>
-    <div class="flirty-note">Your presence is like a magnet – I can't stay away, and I don't want to. 🧲❤️</div>
-</section>
+            <h2>More Memories I Keep Close to My Heart 💑</h2>
+            <div class="photos">
+                <img src="res/photo-5.png" alt="Apoorva">
+                <img src="res/photo-6.png" alt="Apoorva">
+            </div>
+            <p>Look at you, my mard – owning every moment with that 5'5" confidence. My fair skin might be jealous of
+                your glow! 😜</p>
+            <div class="flirty-note">Your presence is like a magnet – I can't stay away, and I don't want to. 🧲❤️</div>
+        </section>
 
 
         <section class="section">
-    <h2>Your Smile in Every Moment 🌟</h2>
-    <div class="photos">
-        <img src="res/photo-7.png" alt="Apoorva">
-        <img src="res/photo-8.png" alt="Apoorva">
-    </div>
-    <p>These smiles of yours? They're my daily dose of happiness. Let's turn them into forever memories! 📸</p>
-    <div class="flirty-note">Flirting with you is my favorite pastime – and now I want it full-time. 😉</div>
-</section>
+            <h2>Your Smile in Every Moment 🌟</h2>
+            <div class="photos">
+                <img src="res/photo-7.png" alt="Apoorva">
+                <img src="res/photo-8.png" alt="Apoorva">
+            </div>
+            <p>These smiles of yours? They're my daily dose of happiness. Let's turn them into forever memories! 📸</p>
+            <div class="flirty-note">Flirting with you is my favorite pastime – and now I want it full-time. 😉</div>
+        </section>
 
 
         <section class="section">
-    <h2>The Side of You I Can’t Stop Adoring 💕</h2>
-    <div class="photos">
-        <img src="res/photo-9.png" alt="Apoorva">
-        <img src="res/photo-10.png" alt="Apoorva">
-    </div>
-    <p>Your humor shines through in every pic, Apoorva. I'm the luckiest guy to have you as my gharwali! 😂</p>
-    <div class="flirty-note">With you, every day feels like a romantic movie – and I'm the leading man. 🎥</div>
-</section>
+            <h2>The Side of You I Can’t Stop Adoring 💕</h2>
+            <div class="photos">
+                <img src="res/photo-9.png" alt="Apoorva">
+                <img src="res/photo-10.png" alt="Apoorva">
+            </div>
+            <p>Your humor shines through in every pic, Apoorva. I'm the luckiest guy to have you as my gharwali! 😂</p>
+            <div class="flirty-note">With you, every day feels like a romantic movie – and I'm the leading man. 🎥</div>
+        </section>
 
         <section class="section">
-    <h2>Us — In Our Own Silly, Perfect Way 😘</h2>
-    <p>Apoorva, you're the spice in my life, and I'm the fair-skinned goofball who adores every bit of you. From your 5'5" sass to my 5'7" charm, we're a perfect match! Let's add some romance to the mix. 💑</p>
-    <div class="flirty-note">If you were a fruit, you'd be a fine-apple – sweet, juicy, and utterly irresistible. 🍎</div>
-</section>
+            <h2>Us — In Our Own Silly, Perfect Way 😘</h2>
+            <p>Apoorva, you're the spice in my life, and I'm the fair-skinned goofball who adores every bit of you. From
+                your 5'5" sass to my 5'7" charm, we're a perfect match! Let's add some romance to the mix. 💑</p>
+            <div class="flirty-note">If you were a fruit, you'd be a fine-apple – sweet, juicy, and utterly
+                irresistible. 🍎</div>
+        </section>
 
         <section class="proposal">
-    <h2>So… Will You Make This Official With Me? 💍</h2>
-    <p>Apoorva, my mard, your humor, charm, and that dusky glow have me completely smitten. Say yes and let's turn up the flirt game! (No? Oh, you'll change your mind...) 😜</p>
-    <div class="buttons">
-        <button id="yes-btn">Yes, My Love! 💖</button>
-        <button id="no-btn">No Way, Handsome! 😏</button>
-    </div>
-</section>
+            <h2>So… Will You Make This Official With Me? 💍</h2>
+            <p>Apoorva, my mard, your humor, charm, and that dusky glow have me completely smitten. Say yes and let's
+                turn up the flirt game! (No? Oh, you'll change your mind...) 😜</p>
+            <div class="buttons">
+                <button id="yes-btn">Yes, My Love! 💖</button>
+                <button id="no-btn">No Way, Handsome! 😏</button>
+            </div>
+        </section>
 
 
-    
+
     </div>
-<div class="final-page" id="final-page">
+    <div class="final-page" id="final-page">
+        <div id="open-heart">❤️</div>
+
         <h1>Yay! Apoorva You Have Made Me The Happiest Guy Alive! 🎉</h1>
-        <p>Thank you for saying yes, my mard Apoorva. Your humor, your charm, your smile, your dusky beauty – everything about you makes my heart race and life feel like a romantic comedy. I love flirting with you, and now I get to do it forever! 💕</p>
-        <img src="res/photo-3.png" alt="Apoorva">
-        <img src="res/photo-4.png" alt="Apoorva">
-        <img src="res/photo-5.png" alt="Apoorva">
-        <p>You're my everything, my gharwali. Let's create flirty memories, sweet kisses, and endless laughter. Forever yours, Sarvagy. 😍❤️</p>
+        <p>Thank you for saying yes, my mard Apoorva. Your humor, your charm, your smile, your dusky beauty – everything
+            about you makes my heart race and life feel like a romantic comedy. I love flirting with you, and now I get
+            to do it forever! 💕</p>
+        <div id="carousel">
+            <div class="carousel-track">
+                <img src="res/photo-1.png" class="carousel-img">
+                <img src="res/photo-2.png" class="carousel-img">
+                <img src="res/photo-3.png" class="carousel-img">
+                <img src="res/photo-4.png" class="carousel-img">
+                <img src="res/photo-5.png" class="carousel-img">
+                <img src="res/photo-6.png" class="carousel-img">
+                <img src="res/photo-7.png" class="carousel-img">
+                <img src="res/photo-8.png" class="carousel-img">
+                <img src="res/photo-9.png" class="carousel-img">
+                <img src="res/photo-10.png" class="carousel-img">
+            </div>
+        </div>
+
+
+
+        <p>You're my everything, my gharwali. Let's create flirty memories, sweet kisses, and endless laughter. Forever
+            yours, Sarvagy. 😍❤️</p>
         <div class="flirty-note">P.S. Your 'no' was just a tease – I knew you'd say yes! 😉</div>
 
-    <div class="hearts" id="hearts"></div>
-    <div class="popup" id="popup">Arre, no flirting with rejection! 😜</div>
+        <div class="hearts" id="hearts"></div>
+        <div class="popup" id="popup">Arre, no flirting with rejection! 😜</div>
 
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script>
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('keydown', (e) => {
-    if (e.key === "F12" ||
-        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) ||
-        (e.ctrlKey && e.key === "U")
-    ) {
-        e.preventDefault();
-        alert("Action disabled.");
-    }
-});
-
-const bgMusic = document.getElementById('bg-music');
-const landingPage = document.getElementById('landing-page');
-const launchBtn = document.getElementById('launch-btn');
-const PASSCODE = "projectnemo@sjam";  // change this to whatever you want
-
-let passFailCount = 0;
-
-const pageLoadTime = performance.now();
-
-function getTotalTime() {
-    return (performance.now() - pageLoadTime) / 1000; // seconds
-}
-
-
-launchBtn.addEventListener('click', () => {
-    const input = prompt("Enter the special passcode to access:");
-    if (input !== PASSCODE) {
-        alert("Incorrect passcode. Access denied.");
-        passFailCount++;
-        return;
-    }
-	document.title = "I Really Like You Apoorva";
-    landingPage.style.display = 'none';
-    bgMusic.currentTime = 25;
-    bgMusic.play().catch(err => console.log('Music blocked:', err));
-    document.querySelector('.container').style.display = 'block';
-});
-
-
-
-
-//launchBtn.addEventListener('click', () => {
-    // Hide landing page
-//    landingPage.style.display = 'none';
-
-    // Start music from 25 seconds
-//    bgMusic.currentTime = 25;
-//    bgMusic.play().catch(err => console.log('Music blocked:', err));
-
-    // Show main container
-//    document.querySelector('.container').style.display = 'block';
-//});
-
-
-        const noBtn = document.getElementById('no-btn');
-        const yesBtn = document.getElementById('yes-btn');
-        const finalPage = document.getElementById('final-page');
-        const popup = document.getElementById('popup');
-        const hearts = document.getElementById('hearts');
-
-        let noClicks = 0;
-        const messages = [
-            "Arre, no flirting with rejection! 😜",
-            "Try again, my mard! 😉",
-            "System says NO is not an option. 🚫",
-            "You're too cute to say no! 💕",
-            "Come on, say yes and let's flirt! 😂"
-        ];
-
-const sectionTimes = {};
-const sectionViews = {};
-let sectionEntryTime = {};
-
-const sections = document.querySelectorAll('.section, .hero, .proposal');
-sections.forEach(section => {
-    const key = section.id || section.innerText.slice(0,20);
-    sectionTimes[key] = 0;
-    sectionViews[key] = 0;
-});
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        const key = entry.target.id || entry.target.innerText.slice(0,20);
-        if (entry.isIntersecting) {
-            sectionEntryTime[key] = performance.now();
-            sectionViews[key] += 1;
-        } else if (sectionEntryTime[key]) {
-            sectionTimes[key] += (performance.now() - sectionEntryTime[key]) / 1000;
-            sectionEntryTime[key] = null;
-        }
-    });
-}, { threshold: 0.5 });
-
-sections.forEach(section => observer.observe(section));
-
-// Track time spent on each paragraph inside sections
-const paragraphTimes = {};
-const paragraphEntryTime = {};
-
-const paragraphs = document.querySelectorAll('.section p, .hero p, .proposal p');
-
-paragraphs.forEach(p => {
-    const key = p.innerText.slice(0, 20).replace(/\s+/g, '_'); 
-    p.dataset.id = key;
-    paragraphTimes[key] = 0;
-});
-
-const paragraphObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        const id = entry.target.dataset.id;
-        if (entry.isIntersecting) {
-            paragraphEntryTime[id] = performance.now();
-        } else if (paragraphEntryTime[id]) {
-            paragraphTimes[id] += (performance.now() - paragraphEntryTime[id]) / 1000;
-            paragraphEntryTime[id] = null;
-        }
-    });
-}, { threshold: 0.8 }); // consider “read” if 80% visible
-paragraphs.forEach(p => paragraphObserver.observe(p));
-
-
-
-        noBtn.addEventListener('click', () => {
-	    
-
-            // Teleport to random position, preferring upper half of the screen
-            const proposal = document.querySelector('.proposal');
-            const rect = proposal.getBoundingClientRect();
-            const x = Math.random() * (rect.width - 150) + rect.left;
-            const y = Math.random() * (rect.height / 2 - 50) + rect.top; // Upper half
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = `${x}px`;
-            noBtn.style.top = `${y}px`;
-
-            // Wiggle animation
-            noBtn.classList.add('wiggle');
-            setTimeout(() => noBtn.classList.remove('wiggle'), 500);
-
-            // Show popup
-            popup.textContent = messages[noClicks % messages.length];
-            popup.style.display = 'block';
-            setTimeout(() => popup.style.display = 'none', 2000);
-
-            noClicks++;
-        });
-// Initialize Firebase
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBIyIXYNvVhJnSK58rB29K9n7SNnbaoqnc",
-  authDomain: "proposal-apoorva-sarvagy.firebaseapp.com",
-  databaseURL: "https://proposal-apoorva-sarvagy-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "proposal-apoorva-sarvagy",
-  storageBucket: "proposal-apoorva-sarvagy.firebasestorage.app",
-  messagingSenderId: "794226715688",
-  appId: "1:794226715688:web:284222db7af709b2cd591d",
-  measurementId: "G-BZ4R12MR9T"
-};
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
-
-        yesBtn.addEventListener('click', () => {
-            // Confetti explosion
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 }
+        <!-- Firebase SDKs -->
+        <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+        <script>
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.addEventListener('keydown', (e) => {
+                if (e.key === "F12" ||
+                    (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) ||
+                    (e.ctrlKey && e.key === "U")
+                ) {
+                    e.preventDefault();
+                    alert("Action disabled.");
+                }
             });
 
-            // Floating hearts
-            for (let i = 0; i < 20; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.textContent = '❤️';
-		heart.style.left = Math.random() * 100 + '%';
-		heart.style.animationDelay = Math.random() * 3 + 's';
- 		hearts.appendChild(heart);
- 		setTimeout(() => heart.remove(), 3000);
- 	}
- const yesRef = database.ref('proposal_responses');
+            const bgMusic = document.getElementById('bg-music');
+            const landingPage = document.getElementById('landing-page');
+            const launchBtn = document.getElementById('launch-btn');
+            const PASSCODE = "projectnemo@sjam";  // change this to whatever you want
 
-    yesRef.push({
-    name: 'Apoorva',
-    response: 'yes',
-    timestamp_raw_utc: new Date().toISOString(),
-    timestamp_ist: new Date().toLocaleString("en-IN", {timeZone: "Asia/Kolkata", hour12:false}),
-    browser_user_agent: navigator.userAgent,
-    platform: navigator.platform,
-    language: navigator.language,
-    noClicks: noClicks,
-    passFailCount: passFailCount,
-    totalTime: getTotalTime(),
-    sectionTimes: sectionTimes,
-    sectionViews: sectionViews,
-    paragraphTimes: paragraphTimes
-});
+            let passFailCount = 0;
+
+            const pageLoadTime = performance.now();
+
+            function getTotalTime() {
+                return (performance.now() - pageLoadTime) / 1000; // seconds
+            }
 
 
-        // Transition to final page
-        setTimeout(() => {
-    finalPage.style.display = 'block';
-    document.querySelector('.container').style.display = 'none';
-    document.body.style.overflow = 'auto'; // enable scrolling on mobile
-}, 1000); // 1 second delay
-});
-</script>
+            // launchBtn.addEventListener('click', () => {
+            //     const input = prompt("Enter the special passcode to access:");
+            //     if (input !== PASSCODE) {
+            //         alert("Incorrect passcode. Access denied.");
+            //         passFailCount++;
+            //         return;
+            //     }
+            //     document.title = "I Really Like You Apoorva";
+            //     landingPage.style.display = 'none';
+            //     bgMusic.currentTime = 25;
+            //     bgMusic.play().catch(err => console.log('Music blocked:', err));
+            //     document.querySelector('.container').style.display = 'block';
+            // });
+            // Start typing only after passcode success
+            launchBtn.addEventListener('click', () => {
+                const input = prompt("Enter the special passcode to access:");
+                if (input !== PASSCODE) {
+                    alert("Incorrect passcode. Access denied.");
+                    passFailCount++;
+                    return;
+                }
+                document.title = "I Really Like You Apoorva";
+                landingPage.style.display = 'none';
+                bgMusic.currentTime = 25;
+                bgMusic.play().catch(err => console.log('Music blocked:', err));
+                document.querySelector('.container').style.display = 'block';
+                typeNext();
+            }, { once: true });
+
+            // Update love meter as she scrolls
+            const loveFill = document.querySelector('#love-meter .fill');
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.scrollY;
+                const docHeight = document.body.scrollHeight - window.innerHeight;
+                const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                loveFill.style.width = Math.min(100, progress + 10) + '%';
+            });
+            document.addEventListener('click', (e) => {
+                // Don’t trigger on buttons to avoid clutter around Yes/No
+                if (e.target.tagName.toLowerCase() === 'button') return;
+                const span = document.createElement('span');
+                span.className = 'click-heart';
+                span.textContent = '💖';
+                span.style.left = e.clientX + 'px';
+                span.style.top = e.clientY + 'px';
+                document.body.appendChild(span);
+                setTimeout(() => span.remove(), 1000);
+            });
+
+            const heroTitle = document.getElementById('hero-title');
+            if (heroTitle) {
+                const fullText = heroTitle.dataset.text;
+                heroTitle.textContent = '';
+                let i = 0;
+                function typeNext() {
+                    if (i <= fullText.length) {
+                        heroTitle.textContent = fullText.slice(0, i);
+                        i++;
+                        setTimeout(typeNext, 70);
+                    }
+                }
+            }
+
+
+
+
+
+            const noBtn = document.getElementById('no-btn');
+            const yesBtn = document.getElementById('yes-btn');
+            const finalPage = document.getElementById('final-page');
+            const popup = document.getElementById('popup');
+            const hearts = document.getElementById('hearts');
+
+            let noClicks = 0;
+            const messages = [
+                "Arre, no flirting with rejection! 😜",
+                "Try again, my mard! 😉",
+                "System says NO is not an option. 🚫",
+                "You're too cute to say no! 💕",
+                "Come on, say yes and let's flirt! 😂"
+            ];
+
+            const sectionTimes = {};
+            const sectionViews = {};
+            let sectionEntryTime = {};
+
+            const sections = document.querySelectorAll('.section, .hero, .proposal');
+            sections.forEach(section => {
+                const key = section.id || section.innerText.slice(0, 20);
+                sectionTimes[key] = 0;
+                sectionViews[key] = 0;
+            });
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const key = entry.target.id || entry.target.innerText.slice(0, 20);
+                    if (entry.isIntersecting) {
+                        sectionEntryTime[key] = performance.now();
+                        sectionViews[key] += 1;
+                    } else if (sectionEntryTime[key]) {
+                        sectionTimes[key] += (performance.now() - sectionEntryTime[key]) / 1000;
+                        sectionEntryTime[key] = null;
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            sections.forEach(section => observer.observe(section));
+
+            // Track time spent on each paragraph inside sections
+            const paragraphTimes = {};
+            const paragraphEntryTime = {};
+
+            const paragraphs = document.querySelectorAll('.section p, .hero p, .proposal p');
+
+            paragraphs.forEach(p => {
+                const key = p.innerText.slice(0, 20).replace(/\s+/g, '_');
+                p.dataset.id = key;
+                paragraphTimes[key] = 0;
+            });
+
+            const paragraphObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.dataset.id;
+                    if (entry.isIntersecting) {
+                        paragraphEntryTime[id] = performance.now();
+                    } else if (paragraphEntryTime[id]) {
+                        paragraphTimes[id] += (performance.now() - paragraphEntryTime[id]) / 1000;
+                        paragraphEntryTime[id] = null;
+                    }
+                });
+            }, { threshold: 0.8 }); // consider “read” if 80% visible
+            paragraphs.forEach(p => paragraphObserver.observe(p));
+
+
+
+            noBtn.addEventListener('click', () => {
+
+                const proposal = document.querySelector('.proposal');
+                const rect = proposal.getBoundingClientRect();
+
+                // Width/height inside the proposal box
+                const boxWidth = rect.width;
+                const boxHeight = rect.height * 0.45; // upper 45% stays on screen
+
+                // Random position inside proposal
+                const newX = Math.random() * (boxWidth - noBtn.offsetWidth);
+                const newY = Math.random() * (boxHeight - noBtn.offsetHeight);
+
+                // Position relative to proposal, not whole page
+                noBtn.style.position = 'absolute';
+                noBtn.style.left = `${newX}px`;
+                noBtn.style.top = `${newY}px`;
+
+                // Wiggle effect
+                noBtn.classList.add('wiggle');
+                setTimeout(() => noBtn.classList.remove('wiggle'), 500);
+
+                // Popup message
+                popup.textContent = messages[noClicks % messages.length];
+                popup.style.display = 'block';
+                setTimeout(() => popup.style.display = 'none', 2000);
+
+                noClicks++;
+            });
+
+
+            // Initialize Firebase
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+                apiKey: "AIzaSyBIyIXYNvVhJnSK58rB29K9n7SNnbaoqnc",
+                authDomain: "proposal-apoorva-sarvagy.firebaseapp.com",
+                databaseURL: "https://proposal-apoorva-sarvagy-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "proposal-apoorva-sarvagy",
+                storageBucket: "proposal-apoorva-sarvagy.firebasestorage.app",
+                messagingSenderId: "794226715688",
+                appId: "1:794226715688:web:284222db7af709b2cd591d",
+                measurementId: "G-BZ4R12MR9T"
+            };
+            firebase.initializeApp(firebaseConfig);
+            const database = firebase.database();
+
+            yesBtn.addEventListener('click', () => {
+                // Soft confetti shower for 5 seconds
+                let duration = 5000;
+                let end = Date.now() + duration;
+
+                (function frame() {
+                    confetti({
+                        particleCount: 2,
+                        startVelocity: 15,
+                        spread: 80,
+                        scalar: 0.8,
+                        origin: { x: Math.random(), y: 0 }
+                    });
+
+                    if (Date.now() < end) {
+                        requestAnimationFrame(frame);
+                    }
+                })();
+
+
+                // Floating hearts
+                for (let i = 0; i < 20; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.textContent = '❤️';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDelay = Math.random() * 3 + 's';
+                    hearts.appendChild(heart);
+                    setTimeout(() => heart.remove(), 3000);
+                }
+                const yesRef = database.ref('proposal_responses');
+
+                yesRef.push({
+                    name: 'Apoorva',
+                    response: 'yes',
+                    timestamp_raw_utc: new Date().toISOString(),
+                    timestamp_ist: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata", hour12: false }),
+                    browser_user_agent: navigator.userAgent,
+                    platform: navigator.platform,
+                    language: navigator.language,
+                    noClicks: noClicks,
+                    passFailCount: passFailCount,
+                    totalTime: getTotalTime(),
+                    sectionTimes: sanitizeObjectKeys(sectionTimes),
+                    sectionViews: sanitizeObjectKeys(sectionViews),
+                    paragraphTimes: sanitizeObjectKeys(paragraphTimes)
+                });
+
+
+                // Transition to final page
+                setTimeout(() => {
+                    finalPage.style.display = 'block';
+                    document.querySelector('.container').style.display = 'none';
+                    document.body.style.overflow = 'auto'; // enable scrolling on mobile
+                }, 1000); // 1 second delay
+            });
+            function sanitizeKey(str) {
+                // keep it simple and safe: letters, numbers, underscore only
+                return String(str)
+                    .replace(/[.#$[\]]/g, '')   // remove forbidden Firebase chars
+                    .replace(/\s+/g, '_')       // spaces to underscores
+                    .slice(0, 40);              // optional: limit key length
+            }
+
+            function sanitizeObjectKeys(obj) {
+                const out = {};
+                Object.keys(obj || {}).forEach(k => {
+                    const safeKey = sanitizeKey(k);
+                    out[safeKey] = obj[k];
+                });
+                return out;
+            }
+
+            // 3D carousel placement
+            const carouselImgs = document.querySelectorAll(".carousel-img");
+            const totalImgs = carouselImgs.length;
+            const radius = 400; // Distance from center (adjust to make more round)
+
+            carouselImgs.forEach((img, i) => {
+                const angle = (i / totalImgs) * 360;
+                img.style.transform = `
+        translate(-50%, -50%)
+        rotateY(${angle}deg)
+        translateZ(${radius}px)
+    `;
+
+                // Fade + lighten images based on position
+            });
+
+            let rotation = 0;
+
+            function rotateCarousel() {
+                rotation += 0.2; // smooth speed
+
+                carouselImgs.forEach((img, i) => {
+                    const angle = (i / totalImgs) * 360 + rotation;
+                    img.style.transform = `
+            translate(-50%, -50%)
+            rotateY(${angle}deg)
+            translateZ(${radius}px)
+        `;
+                });
+
+                requestAnimationFrame(rotateCarousel);
+            }
+
+            rotateCarousel();
+
+
+
+
+        </script>
