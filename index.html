@@ -182,7 +182,7 @@
             min-height: 100vh;
             overflow-y: auto;
             background: linear-gradient(135deg, #ffe6f0, #ffb3ba);
-            z-index: 1000;
+            z-index: 5000;
             text-align: center;
             padding: 100px 20px;
             animation: fadeIn 1s ease-in;
@@ -442,26 +442,27 @@
             justify-content: center;
             align-items: center;
 
-             /* allow scrolling inside overlay on mobile */
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+            /* allow scrolling inside overlay on mobile */
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .intro-stage {
-    margin: 40px auto;              /* small vertical margins */
-    text-align: center;
-    display: none;
-    animation: fadeIntro 0.8s ease forwards;
+            margin: 40px auto;
+            /* small vertical margins */
+            text-align: center;
+            display: none;
+            animation: fadeIntro 0.8s ease forwards;
 
-    width: 100%;
-    max-width: 800px;
+            width: 100%;
+            max-width: 800px;
 
-    /* display: flex; */
-    flex-direction: column;
-    align-items: center;
-    /* remove strict vertical centering that can hide overflow */
-    justify-content: flex-start;
-}
+            /* display: flex; */
+            flex-direction: column;
+            align-items: center;
+            /* remove strict vertical centering that can hide overflow */
+            justify-content: flex-start;
+        }
 
 
 
@@ -489,23 +490,30 @@
         }
 
         /* Tiny tap animation for wish button */
-.wish-pressed {
-    transform: scale(0.92) translateY(1px);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
-}
+        .wish-pressed {
+            transform: scale(0.92) translateY(1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            transition: transform 0.12s ease, box-shadow 0.12s ease;
+        }
 
-.wish-tap-emoji {
-    position: absolute;
-    font-size: 1.4em;
-    pointer-events: none;
-    animation: wishTapFloat 0.5s ease-out forwards;
-}
+        .wish-tap-emoji {
+            position: absolute;
+            font-size: 1.4em;
+            pointer-events: none;
+            animation: wishTapFloat 0.5s ease-out forwards;
+        }
 
-@keyframes wishTapFloat {
-    0%   { transform: translateY(0);   opacity: 1; }
-    100% { transform: translateY(-25px); opacity: 0; }
-}
+        @keyframes wishTapFloat {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-25px);
+                opacity: 0;
+            }
+        }
 
 
         .love-letter {
@@ -583,79 +591,84 @@
             text-align: center;
             animation: fadeIntro 0.4s ease;
         }
+
         .magazine-block {
-    display: flex;
-    gap: 24px;
-    align-items: center;
-    margin-bottom: 30px;
-}
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
 
-.magazine-block.reverse {
-    flex-direction: row-reverse;
-}
+        .magazine-block.reverse {
+            flex-direction: row-reverse;
+        }
 
-.magazine-image {
-    flex: 0 0 260px;
-}
+        .magazine-image {
+            flex: 0 0 260px;
+        }
 
-.magazine-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-    object-fit: cover;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-}
+        .magazine-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            object-fit: cover;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+        }
 
-.magazine-text {
-    flex: 1;
-    text-align: left;
-}
+        .magazine-text {
+            flex: 1;
+            text-align: left;
+        }
 
-.magazine-text h3 {
-    margin: 0 0 8px 0;
-    font-size: 1.4em;
-    color: #ff6b9d;
-}
+        .magazine-text h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.4em;
+            color: #ff6b9d;
+        }
 
-.magazine-text p {
-    margin: 0 0 6px 0;
-    line-height: 1.5;
-}
+        .magazine-text p {
+            margin: 0 0 6px 0;
+            line-height: 1.5;
+        }
 
-/* Mobile: stack image above text */
-@media (max-width: 768px) {
-    .magazine-block,
-    .magazine-block.reverse {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+        /* Mobile: stack image above text */
+        @media (max-width: 768px) {
 
-    .magazine-image {
-        width: 100%;
-    }
+            .magazine-block,
+            .magazine-block.reverse {
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
-    .magazine-text {
-        text-align: left;
-        width: 100%;
-    }
-}
+            .magazine-image {
+                width: 100%;
+            }
 
-/* Disable text selection everywhere */
-* {
-    -webkit-user-select: none;  /* Safari / iOS */
-    -moz-user-select: none;     /* Firefox */
-    -ms-user-select: none;      /* IE/Edge legacy */
-    user-select: none;
-}
+            .magazine-text {
+                text-align: left;
+                width: 100%;
+            }
+        }
 
-/* Remove blue focus outline on buttons/links (visual only) */
-button:focus,
-a:focus {
-    outline: none;
-}
+        /* Disable text selection everywhere */
+        * {
+            -webkit-user-select: none;
+            /* Safari / iOS */
+            -moz-user-select: none;
+            /* Firefox */
+            -ms-user-select: none;
+            /* IE/Edge legacy */
+            user-select: none;
+        }
 
-/* If you ever need an actually editable field, override like this: */
-/*
+        /* Remove blue focus outline on buttons/links (visual only) */
+        button:focus,
+        a:focus {
+            outline: none;
+        }
+
+        /* If you ever need an actually editable field, override like this: */
+        /*
 .editable,
 .editable * {
     -webkit-user-select: text;
@@ -664,7 +677,6 @@ a:focus {
     user-select: text;
 }
 */
-
     </style>
 </head>
 <div id="wish-modal-overlay">
@@ -714,9 +726,9 @@ a:focus {
                 Your browser does not support the video tag.
             </video>
 
-<button id="intro-btn-1" class="intro-button" style="margin-top: 30px;">
-    Continue
-</button>
+            <button id="intro-btn-1" class="intro-button" style="margin-top: 30px;">
+                Continue
+            </button>
         </div>
 
 
@@ -828,68 +840,68 @@ a:focus {
 
 
         <section class="section">
-  <h2>What I Love Most About You 💖</h2>
+            <h2>What I Love Most About You 💖</h2>
 
-  <div class="magazine-block">
-    <div class="magazine-image">
-      <img src="res/photo-3.png" alt="Apoorva laughing">
-    </div>
-    <div class="magazine-text">
-      <h3>Your laugh and your light</h3>
-      <p>
-        Your laugh is ridiculously contagious. The moment you start giggling,
-        the whole world around you feels softer and lighter — including me.
-      </p>
-      <p>
-        You don’t just enter a room, you brighten it. You make ordinary moments
-        feel like scenes from a feel‑good movie I never want to end.
-      </p>
-      <p class="flirty-note">
-        You’re the plot twist my boring days were waiting for. 😉
-      </p>
-    </div>
-  </div>
+            <div class="magazine-block">
+                <div class="magazine-image">
+                    <img src="res/photo-3.png" alt="Apoorva laughing">
+                </div>
+                <div class="magazine-text">
+                    <h3>Your laugh and your light</h3>
+                    <p>
+                        Your laugh is ridiculously contagious. The moment you start giggling,
+                        the whole world around you feels softer and lighter — including me.
+                    </p>
+                    <p>
+                        You don’t just enter a room, you brighten it. You make ordinary moments
+                        feel like scenes from a feel‑good movie I never want to end.
+                    </p>
+                    <p class="flirty-note">
+                        You’re the plot twist my boring days were waiting for. 😉
+                    </p>
+                </div>
+            </div>
 
-  <div class="magazine-block reverse">
-    <div class="magazine-image">
-      <img src="res/photo-4.png" alt="Apoorva smiling">
-    </div>
-    <div class="magazine-text">
-      <h3>Your dusky glow</h3>
-      <p>
-        Your dusky skin is my favourite shade of sunset — warm, gentle,
-        and somehow impossible to look away from.
-      </p>
-      <p>
-        Standing next to you, I always feel like the lucky one who got the
-        most beautiful view in the whole world.
-      </p>
-      <p class="flirty-note">
-        If glow was a competition, you’d be permanently banned for being too good. 🌅
-      </p>
-    </div>
-  </div>
+            <div class="magazine-block reverse">
+                <div class="magazine-image">
+                    <img src="res/photo-4.png" alt="Apoorva smiling">
+                </div>
+                <div class="magazine-text">
+                    <h3>Your dusky glow</h3>
+                    <p>
+                        Your dusky skin is my favourite shade of sunset — warm, gentle,
+                        and somehow impossible to look away from.
+                    </p>
+                    <p>
+                        Standing next to you, I always feel like the lucky one who got the
+                        most beautiful view in the whole world.
+                    </p>
+                    <p class="flirty-note">
+                        If glow was a competition, you’d be permanently banned for being too good. 🌅
+                    </p>
+                </div>
+            </div>
 
-  <div class="magazine-block">
-    <div class="magazine-image">
-      <img src="res/photo-5.png" alt="Apoorva posing">
-    </div>
-    <div class="magazine-text">
-      <h3>Your charm and your chaos</h3>
-      <p>
-        You flirt, you tease, you joke — and somehow manage to make it all feel
-        so safe and soft at the same time.
-      </p>
-      <p>
-        You’re equal parts comfort and chaos, and my heart has fallen for both
-        sides of you without a single complaint.
-      </p>
-      <p class="flirty-note">
-        I didn’t “catch feelings”, you just walked in and stole them all. 🪝
-      </p>
-    </div>
-  </div>
-</section>
+            <div class="magazine-block">
+                <div class="magazine-image">
+                    <img src="res/photo-5.png" alt="Apoorva posing">
+                </div>
+                <div class="magazine-text">
+                    <h3>Your charm and your chaos</h3>
+                    <p>
+                        You flirt, you tease, you joke — and somehow manage to make it all feel
+                        so safe and soft at the same time.
+                    </p>
+                    <p>
+                        You’re equal parts comfort and chaos, and my heart has fallen for both
+                        sides of you without a single complaint.
+                    </p>
+                    <p class="flirty-note">
+                        I didn’t “catch feelings”, you just walked in and stole them all. 🪝
+                    </p>
+                </div>
+            </div>
+        </section>
 
         </section>
 
@@ -900,216 +912,299 @@ a:focus {
 
 
         <section class="section">
-  <div class="magazine-block">
-    <div class="magazine-image">
-      <img src="res/photo-2.png" alt="Park meetup">
-    </div>
-    <div class="magazine-text">
-      <h3>That Park Day 🌳</h3>
-      <p>
-        That day in the park felt like a glitch in the universe — everything
-        else blurred out and it was just your laugh, your eyes, and that teasing
-        “aurat” you threw at me.
-      </p>
-      <p>
-        I pretended to act normal, but honestly, my heart had already walked
-        over to you, sat down, and decided, “Yep, this is home now.”
-      </p>
-      <p class="flirty-note">
-        You called me your aurat as a joke. My heart took it as a contract. 😏
-      </p>
-    </div>
-  </div>
+            <div class="magazine-block">
+                <div class="magazine-image">
+                    <img src="res/photo-2.png" alt="Park meetup">
+                </div>
+                <div class="magazine-text">
+                    <h3>That Park Day 🌳</h3>
+                    <p>
+                        That day in the park felt like a glitch in the universe — everything
+                        else blurred out and it was just your laugh, your eyes, and that teasing
+                        “aurat” you threw at me.
+                    </p>
+                    <p>
+                        I pretended to act normal, but honestly, my heart had already walked
+                        over to you, sat down, and decided, “Yep, this is home now.”
+                    </p>
+                    <p class="flirty-note">
+                        You called me your aurat as a joke. My heart took it as a contract. 😏
+                    </p>
+                </div>
+            </div>
 
-  <div class="magazine-block reverse">
-    <div class="magazine-image">
-      <img src="res/photo-11.jpg" alt="Shashwat birthday group photo">
-    </div>
-    <div class="magazine-text">
-      <h3>Shashwat’s Birthday Spark 🎉</h3>
-      <p>
-        In that chaotic birthday mess — people shouting, music blasting,
-        random jokes flying around — you were still the loudest thing in my mind.
-      </p>
-      <p>
-        Somewhere between your one‑liners and your smile, I realised I wasn’t
-        just enjoying the party… I was quietly falling for the girl who was
-        running it.
-      </p>
-      <p class="flirty-note">
-        The party ended. My crush on you didn’t. 🎶
-      </p>
-    </div>
-  </div>
-</section>
+            <div class="magazine-block reverse">
+                <div class="magazine-image">
+                    <img src="res/photo-11.jpg" alt="Shashwat birthday group photo">
+                </div>
+                <div class="magazine-text">
+                    <h3>Shashwat’s Birthday Spark 🎉</h3>
+                    <p>
+                        In that chaotic birthday mess — people shouting, music blasting,
+                        random jokes flying around — you were still the loudest thing in my mind.
+                    </p>
+                    <p>
+                        Somewhere between your one‑liners and your smile, I realised I wasn’t
+                        just enjoying the party… I was quietly falling for the girl who was
+                        running it.
+                    </p>
+                    <p class="flirty-note">
+                        The party ended. My crush on you didn’t. 🎶
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="magazine-block reverse">
+                <div class="magazine-image">
+                    <img src="res/photo-3.png" alt="Apoorva thoughtful">
+                </div>
+                <div class="magazine-text">
+                    <h3>Mini Game 2: Perfect Timing ❤️</h3>
+                    <p>
+                        One more tiny challenge: try to stop the moving heart when it reaches the
+                        glowing “sweet spot” on the bar. Your timing score decides the message you get.
+                    </p>
+                    <p>
+                        Spoiler: even if you miss, my heart is already permanently stuck on you.
+                    </p>
+
+                    <div id="timing-game-wrapper" style="margin-top: 20px; max-width: 360px;">
+                        <!-- Bar -->
+                        <div id="timing-bar" style="
+            position: relative;
+            width: 100%;
+            height: 24px;
+            border-radius: 999px;
+            background: #ffe6f0;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        ">
+                            <!-- Sweet spot -->
+                            <div id="timing-sweet" style="
+              position: absolute;
+              left: 40%;
+              width: 20%;
+              height: 100%;
+              background: rgba(255,107,157,0.35);
+          "></div>
+
+                            <!-- Moving heart -->
+                            <div id="timing-heart" style="
+              position: absolute;
+              top: 50%;
+              left: 0;
+              transform: translate(-50%, -50%);
+              font-size: 1.4em;
+          ">
+                                ❤️
+                            </div>
+                        </div>
+
+                        <button id="timing-btn" class="intro-button"
+                            style="margin-top: 16px; font-size:1em; padding:10px 26px;">
+                            Stop the heart 💓
+                        </button>
+
+                        <p id="timing-result" style="margin-top: 8px; font-size: 0.95em;"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
 
 
 
         <section class="section">
-  <div class="magazine-block">
-    <div class="magazine-image">
-      <img src="res/photo-6.png" alt="Apoorva playful">
-    </div>
-    <div class="magazine-text">
-      <h3>Little moments, big feelings 😘</h3>
-      <p>
-        These small, random photos of you are actually my favourites, because
-        they’re so… you. Unfiltered, dramatic, adorable, and 100% real.
-      </p>
-      <p>
-        It’s in these tiny moments — mid‑laugh, mid‑pose, mid‑chaos — that
-        I realise how naturally my heart has started choosing you.
-      </p>
-      <p class="flirty-note">
-        You’re not “photogenic”, you’re just dangerously cute in real life. 💃
-      </p>
-    </div>
-  </div>
+            <div class="magazine-block">
+                <div class="magazine-image">
+                    <img src="res/photo-6.png" alt="Apoorva playful">
+                </div>
+                <div class="magazine-text">
+                    <h3>Little moments, big feelings 😘</h3>
+                    <p>
+                        These small, random photos of you are actually my favourites, because
+                        they’re so… you. Unfiltered, dramatic, adorable, and 100% real.
+                    </p>
+                    <p>
+                        It’s in these tiny moments — mid‑laugh, mid‑pose, mid‑chaos — that
+                        I realise how naturally my heart has started choosing you.
+                    </p>
+                    <p class="flirty-note">
+                        You’re not “photogenic”, you’re just dangerously cute in real life. 💃
+                    </p>
+                </div>
+            </div>
 
-  <div class="magazine-block reverse">
-    <div class="magazine-image">
-      <img src="res/photo-7.png" alt="Apoorva smiling">
-    </div>
-    <div class="magazine-text">
-      <h3>More memories I replay 💑</h3>
-      <p>
-        Every time I scroll through these pictures, it feels like flipping
-        through my favourite chapter of life — the one where you quietly
-        became the main character.
-      </p>
-      <p>
-        You’re in my gallery, in my chats, in my playlists… and slowly,
-        very shamelessly, in every future plan my brain comes up with.
-      </p>
-      <p class="flirty-note">
-        My phone storage is full, but I still want more pictures of you. 🧲
-      </p>
-    </div>
-  </div>
-</section>
+            <div class="magazine-block reverse">
+                <div class="magazine-image">
+                    <img src="res/photo-7.png" alt="Apoorva smiling">
+                </div>
+                <div class="magazine-text">
+                    <h3>More memories I replay 💑</h3>
+                    <p>
+                        Every time I scroll through these pictures, it feels like flipping
+                        through my favourite chapter of life — the one where you quietly
+                        became the main character.
+                    </p>
+                    <p>
+                        You’re in my gallery, in my chats, in my playlists… and slowly,
+                        very shamelessly, in every future plan my brain comes up with.
+                    </p>
+                    <p class="flirty-note">
+                        My phone storage is full, but I still want more pictures of you. 🧲
+                    </p>
+                </div>
+            </div>
+        </section>
 
-
-
-        <section class="section">
-  <div class="magazine-block">
-    <div class="magazine-image">
-      <img src="res/photo-8.png" alt="Apoorva smiling big">
-    </div>
-    <div class="magazine-text">
-      <h3>Your smile, my favourite view 🌟</h3>
-      <p>
-        Your smile is the one notification I never get tired of. It makes
-        bad days lighter, normal days special, and good days feel legendary.
-      </p>
-      <p>
-        Sometimes I catch myself thinking about your smile out of nowhere —
-        that’s how I know this isn’t just a crush, it’s something softer,
-        deeper, and very real.
-      </p>
-      <p class="flirty-note">
-        If happiness had a face, it would look suspiciously like you. 📸
-      </p>
-    </div>
-  </div>
-
-  <div class="magazine-block reverse">
-    <div class="magazine-image">
-      <img src="res/photo-9.png" alt="Apoorva goofy">
-    </div>
-    <div class="magazine-text">
-      <h3>The side of you I adore 💕</h3>
-      <p>
-        Your goofy, dramatic, over‑the‑top side is honestly one of the best
-        things about you. You make being around you feel easy and fun.
-      </p>
-      <p>
-        I don’t just like your “perfect” moments — I love the unfiltered ones
-        where we’re just two idiots laughing at absolutely nothing.
-      </p>
-      <p class="flirty-note">
-        I don’t want a “perfect” love story. I want this silly, loud,
-        ours‑only one with you. 🎥
-      </p>
-    </div>
-  </div>
-</section>
 
 
         <section class="section">
-  <div class="magazine-block">
-    <div class="magazine-image">
-      <img src="res/photo-10.png" alt="You and Apoorva vibe">
-    </div>
-    <div class="magazine-text">
-      <h3>Us — the perfectly imperfect duo 😘</h3>
-      <p>
-        You’re the fiery, dusky queen at 5'5", and I’m the slightly taller,
-        slightly stupider 5'7" guy who still can’t believe he gets to flirt
-        with you this much.
-      </p>
-      <p>
-        We’re not some calm, aesthetic couple — we’re chaos, inside jokes,
-        teasing, flirting, and soft moments hidden in between. And that’s
-        exactly why I want this to be official.
-      </p>
-      <p class="flirty-note">
-        Out of all the versions of my future, the one with you in it
-        is the only one that feels right. 💑
-      </p>
-    </div>
-  </div>
-</section>
+            <div class="magazine-block">
+                <div class="magazine-image">
+                    <img src="res/photo-8.png" alt="Apoorva smiling big">
+                </div>
+                <div class="magazine-text">
+                    <h3>Your smile, my favourite view 🌟</h3>
+                    <p>
+                        Your smile is the one notification I never get tired of. It makes
+                        bad days lighter, normal days special, and good days feel legendary.
+                    </p>
+                    <p>
+                        Sometimes I catch myself thinking about your smile out of nowhere —
+                        that’s how I know this isn’t just a crush, it’s something softer,
+                        deeper, and very real.
+                    </p>
+                    <p class="flirty-note">
+                        If happiness had a face, it would look suspiciously like you. 📸
+                    </p>
+                </div>
+            </div>
 
-<section class="section">
-  <div class="magazine-block">
-    <div class="magazine-image">
-      <img src="res/photo-7.png" alt="Apoorva playful">
-    </div>
-    <div class="magazine-text">
-      <h3>Mini Game: Catch My Heart 🎮</h3>
-      <p>
-        Before you answer the big question, let’s play something tiny and silly.
-        You have 10 seconds to tap the little heart running around this box.
-      </p>
-      <p>
-        No pressure though… because whether you win or lose, you’ve already
-        won something much bigger.
-      </p>
-      <div id="game-wrapper" style="margin-top: 20px;">
-        <div id="game-area" style="
+            <div class="magazine-block reverse">
+                <div class="magazine-image">
+                    <img src="res/photo-9.png" alt="Apoorva goofy">
+                </div>
+                <div class="magazine-text">
+                    <h3>The side of you I adore 💕</h3>
+                    <p>
+                        Your goofy, dramatic, over‑the‑top side is honestly one of the best
+                        things about you. You make being around you feel easy and fun.
+                    </p>
+                    <p>
+                        I don’t just like your “perfect” moments — I love the unfiltered ones
+                        where we’re just two idiots laughing at absolutely nothing.
+                    </p>
+                    <p class="flirty-note">
+                        I don’t want a “perfect” love story. I want this silly, loud,
+                        ours‑only one with you. 🎥
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section">
+            <div class="magazine-block">
+                <div class="magazine-image">
+                    <img src="res/photo-10.png" alt="You and Apoorva vibe">
+                </div>
+                <div class="magazine-text">
+                    <h3>Us — the perfectly imperfect duo 😘</h3>
+                    <p>
+                        You’re the fiery, dusky queen at 5'5", and I’m the slightly taller,
+                        slightly stupider 5'7" guy who still can’t believe he gets to flirt
+                        with you this much.
+                    </p>
+                    <p>
+                        We’re not some calm, aesthetic couple — we’re chaos, inside jokes,
+                        teasing, flirting, and soft moments hidden in between. And that’s
+                        exactly why I want this to be official.
+                    </p>
+                    <p class="flirty-note">
+                        Out of all the versions of my future, the one with you in it
+                        is the only one that feels right. 💑
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="magazine-block">
+                <div class="magazine-image">
+                    <img src="res/photo-7.png" alt="Apoorva playful">
+                </div>
+                <div class="magazine-text">
+                    <h3>Mini Game: Fill My Heart Meter 🎮</h3>
+                    <p>
+                        Last challenge before the big question: you have 8 seconds to tap as many hearts
+                        as you can inside this box. Every tap fills the love meter a little more.
+                    </p>
+                    <p>
+                        No matter the score, one thing is already fixed — who my heart belongs to.
+                    </p>
+
+                    <div id="love-game-wrapper" style="margin-top: 20px;">
+                        <!-- Bigger play area -->
+                        <div id="love-game-area" style="
             position: relative;
             margin: 0 auto;
-            width: 260px;
-            height: 200px;
-            border-radius: 20px;
+            width: 320px;
+            height: 240px;
+            border-radius: 24px;
             background: linear-gradient(135deg,#ffe6f0,#ffd1e8);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.18);
             overflow: hidden;
         ">
-          <button id="game-heart" style="
+                            <button id="love-game-heart" style="
               position: absolute;
-              width: 60px;
-              height: 60px;
+              width: 70px;
+              height: 70px;
               border-radius: 50%;
               border: none;
               background: #ff4f92;
               color: #fff;
-              font-size: 1.6em;
+              font-size: 1.8em;
               cursor: pointer;
-              box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+              box-shadow: 0 5px 14px rgba(0,0,0,0.25);
           ">
-            ❤️
-          </button>
-        </div>
-        <p id="game-timer" style="margin-top: 8px; font-size: 0.95em; color:#c44569;">
-          Tap the heart to start the game — Time: 10s
-        </p>
-        <p id="game-result" style="margin-top: 4px; font-size: 1em;"></p>
-      </div>
-    </div>
-  </div>
-</section>
+                                ❤️
+                            </button>
+                        </div>
+
+                        <!-- Love meter bar -->
+                        <div style="margin-top: 10px;">
+                            <div style="
+              width: 100%;
+              max-width: 320px;
+              height: 10px;
+              border-radius: 999px;
+              background: #ffe6f0;
+              overflow: hidden;
+              box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+          ">
+                                <div id="love-game-meter" style="
+                width: 0%;
+                height: 100%;
+                border-radius: 999px;
+                background: linear-gradient(90deg,#ff6b9d,#ffb347);
+                transition: width 0.2s ease;
+            "></div>
+                            </div>
+                        </div>
+
+                        <p id="love-game-timer" style="margin-top: 6px; font-size: 0.95em; color:#c44569;">
+                            Tap the heart to start the game — Time: 8s
+                        </p>
+                        <p id="love-game-result" style="margin-top: 4px; font-size: 1em;"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
 
         <section class="proposal">
@@ -1235,18 +1330,31 @@ a:focus {
                 intro3.style.display = "block";
             });
 
-            const wishDisplay = document.getElementById("wish-display");
-            const wishBtn = document.getElementById("wish-btn");
             const wishModal = document.getElementById("wish-modal");
             const wishModalOverlay = document.getElementById("wish-modal-overlay");
             const proceedBtn = document.getElementById("proceed-btn");
 
             const autoWishText = "Sarvagy's love";
+            // --- Wish interaction tracking ---
+            let wishAutoTyped = false;
+            let wishAutoTypedAt = null;
+            let wishConfirmedAt = null;
+
+            const wishDisplay = document.getElementById("wish-display");
+            const wishBtn = document.getElementById("wish-btn");
+
+            wishBtn.disabled = true;  // start disabled
+            wishBtn.style.opacity = 0.6;
+            wishBtn.style.cursor = "default";
 
             function typeWishAndClick() {
                 if (wishDisplay.dataset.done === "true") return;
                 wishDisplay.dataset.done = "true";
 
+                wishAutoTyped = true;
+                wishAutoTypedAt = new Date().toISOString();
+
+                const autoWishText = "Sarvagy's love";
                 wishDisplay.textContent = "";
                 let i = 0;
 
@@ -1257,40 +1365,33 @@ a:focus {
                         setTimeout(step, 80);
                     } else {
                         setTimeout(() => {
-    // visual tap
-    wishBtn.classList.add('wish-pressed');
-
-    // optional little emoji tap above the button
-    const rect = wishBtn.getBoundingClientRect();
-    const tapEmoji = document.createElement('div');
-    tapEmoji.className = 'wish-tap-emoji';
-    tapEmoji.textContent = '✨';
-    tapEmoji.style.left = (rect.left + rect.width / 2) + 'px';
-    tapEmoji.style.top  = (rect.top - 10) + 'px';
-    document.body.appendChild(tapEmoji);
-    setTimeout(() => tapEmoji.remove(), 500);
-
-    // fire the real click
-    wishBtn.click();
-
-    // remove pressed state after animation
-    setTimeout(() => {
-        wishBtn.classList.remove('wish-pressed');
-    }, 300);
-}, 300);
-
+                            // visual press + click
+                            // enable button now
+                            wishBtn.disabled = false;
+                            wishBtn.style.opacity = 1;
+                            wishBtn.style.cursor = "pointer";
+                            wishBtn.click();
+                        }, 300);
                     }
                 }
                 step();
             }
 
-            // Clicking/tapping the fake input starts typing
-            wishDisplay.addEventListener("click", typeWishAndClick);
+            if (wishDisplay) {
+                wishDisplay.addEventListener("click", typeWishAndClick);
+            }
 
-            wishBtn.addEventListener("click", () => {
-                // Show modal overlay and card
-                wishModalOverlay.style.display = "flex";
-            });
+            if (wishBtn) {
+                wishBtn.addEventListener("click", () => {
+                    if (wishBtn.disabled) return;  // ignore early taps
+
+                    if (!wishConfirmedAt) {
+                        wishConfirmedAt = new Date().toISOString();
+                    }
+                    wishModalOverlay.style.display = "flex";
+                });
+            }
+
 
             // “Proceed, my love!” opens main site
             proceedBtn.addEventListener("click", () => {
@@ -1338,6 +1439,119 @@ a:focus {
                     }
                 }
             }
+
+            // --- Letter (Stage 2) timing ---
+            let letterStartTime = null;
+            let letterTotalTime = 0;
+
+            // when Stage 2 becomes visible
+            const introBtn1 = document.getElementById("intro-btn-1");
+            if (introBtn1) {
+                introBtn1.addEventListener("click", () => {
+                    // Stage 1 -> Stage 2
+                    const intro2 = document.getElementById("intro-stage-2");
+                    if (intro2) {
+                        letterStartTime = performance.now();
+                    }
+                });
+            }
+
+            // when Stage 2 -> Stage 3 (letter finished)
+            const introBtn2 = document.getElementById("intro-btn-2");
+            if (introBtn2) {
+                introBtn2.addEventListener("click", () => {
+                    if (letterStartTime != null) {
+                        letterTotalTime =
+                            (performance.now() - letterStartTime) / 1000; // seconds
+                        letterStartTime = null;
+                    }
+                });
+            }
+
+
+
+            // --- Game 1: Fill My Heart Meter ---
+            let game1Started = false;
+            let game1StartAt = null;
+            let game1EndAt = null;
+            let game1Clicks = 0;
+            let game1FinalPercent = 0; // 0..100
+
+            // in your existing game 1 code:
+            if (lgHeart) {
+                lgHeart.addEventListener("click", () => {
+                    if (!lgStarted) {
+                        lgStartGameOnce();
+                        game1Started = true;
+                        game1StartAt = new Date().toISOString();
+                    }
+                    if (!lgHeart.disabled && lgTimeLeft > 0) {
+                        lgClicks++;
+                        game1Clicks = lgClicks;
+
+                        const percent = Math.min(100, (lgClicks / lgMaxClicksForFull) * 100);
+                        lgMeter.style.width = percent + "%";
+                        game1FinalPercent = percent;
+
+                        lgHeart.style.transform = "scale(0.9)";
+                        setTimeout(() => {
+                            lgHeart.style.transform = "scale(1)";
+                        }, 120);
+                    }
+                });
+            }
+
+            function lgEndGame() {
+                clearInterval(lgTimerInterval);
+                clearInterval(lgMoveInterval);
+                lgHeart.disabled = true;
+
+                if (!game1EndAt) {
+                    game1EndAt = new Date().toISOString();
+                }
+
+                // existing result text...
+            }
+
+            // --- Game 2: Perfect Timing ---
+            let game2Played = false;
+            let game2LastScore = null; // 'perfect' | 'close' | 'miss'
+            let game2LastAt = null;
+
+            function timingStop() {
+                tRunning = false;
+                cancelAnimationFrame(tAnimFrame);
+
+                const sweetRect = tSweet.getBoundingClientRect();
+                const heartRect = tHeart.getBoundingClientRect();
+
+                const heartCenter = heartRect.left + heartRect.width / 2;
+                const sweetStart = sweetRect.left;
+                const sweetEnd = sweetRect.left + sweetRect.width;
+
+                let msg;
+                let score;
+
+                if (heartCenter >= sweetStart && heartCenter <= sweetEnd) {
+                    msg = "Perfect timing! ...";
+                    score = 'perfect';
+                } else if (heartCenter >= sweetStart - sweetRect.width &&
+                    heartCenter <= sweetEnd + sweetRect.width) {
+                    msg = "Almost perfect! ...";
+                    score = 'close';
+                } else {
+                    msg = "You missed the zone this time, ...";
+                    score = 'miss';
+                }
+
+                tResult.textContent = msg;
+                tBtn.textContent = "Play again 🔁";
+
+                game2Played = true;
+                game2LastScore = score;
+                game2LastAt = new Date().toISOString();
+            }
+
 
 
 
@@ -1390,11 +1604,13 @@ a:focus {
 
             const paragraphs = document.querySelectorAll('.section p, .hero p, .proposal p');
 
-            paragraphs.forEach(p => {
-                const key = p.innerText.slice(0, 20).replace(/\s+/g, '_');
-                p.dataset.id = key;
-                paragraphTimes[key] = 0;
+            paragraphs.forEach((p, index) => {
+                let raw = p.innerText.slice(0, 20).replace(/\s+/g, '_');
+                if (!raw) raw = 'paragraph_' + index;
+                p.dataset.id = raw;
+                paragraphTimes[raw] = 0;
             });
+
 
             const paragraphObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1493,42 +1709,88 @@ a:focus {
                     name: 'Apoorva',
                     response: 'yes',
                     timestamp_raw_utc: new Date().toISOString(),
-                    timestamp_ist: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata", hour12: false }),
+                    timestamp_ist: new Date().toLocaleString("en-IN", {
+                        timeZone: "Asia/Kolkata",
+                        hour12: false
+                    }),
                     browser_user_agent: navigator.userAgent,
                     platform: navigator.platform,
                     language: navigator.language,
+
                     noClicks: noClicks,
                     passFailCount: passFailCount,
                     totalTime: getTotalTime(),
+
+                    // scroll/reading analytics
                     sectionTimes: sanitizeObjectKeys(sectionTimes),
                     sectionViews: sanitizeObjectKeys(sectionViews),
-                    paragraphTimes: sanitizeObjectKeys(paragraphTimes)
+                    paragraphTimes: sanitizeObjectKeys(paragraphTimes),
+
+                    // intro / letter / wish analytics
+                    letter: {
+                        seconds_spent: sanitizeNumeric(letterTotalTime)
+                    },
+                    wish: {
+                        auto_typed: wishAutoTyped,
+                        auto_typed_at_utc: wishAutoTypedAt,
+                        confirmed_at_utc: wishConfirmedAt
+                    },
+
+                    // game 1 analytics
+                    game_fill_my_heart: {
+                        started: game1Started,
+                        started_at_utc: game1StartAt,
+                        ended_at_utc: game1EndAt,
+                        clicks: game1Clicks,
+                        final_meter_percent: sanitizeNumeric(game1FinalPercent)
+                    },
+
+                    // game 2 analytics
+                    game_perfect_timing: {
+                        played: game2Played,
+                        last_result: game2LastScore,   // 'perfect' | 'close' | 'miss' or null
+                        last_played_at_utc: game2LastAt
+                    }
                 });
+
 
 
                 // Transition to final page
                 setTimeout(() => {
+                    if (mainContainer) mainContainer.style.display = 'none';
+                    if (overlay) overlay.style.display = 'none';
+                    if (landingPage) landingPage.style.display = 'none';
                     finalPage.style.display = 'block';
-                    document.querySelector('.container').style.display = 'none';
-                    document.body.style.overflow = 'auto'; // enable scrolling on mobile
-                }, 1000); // 1 second delay
+                    document.body.style.overflow = 'auto';
+                }, 1000);
+
             });
             function sanitizeKey(str) {
-                // keep it simple and safe: letters, numbers, underscore only
-                return String(str)
-                    .replace(/[.#$[\]]/g, '')   // remove forbidden Firebase chars
-                    .replace(/\s+/g, '_')       // spaces to underscores
-                    .slice(0, 40);              // optional: limit key length
+                let cleaned = String(str)
+                    .replace(/[.#$[\]/]/g, '')  // forbidden chars
+                    .replace(/\s+/g, '_')
+                    .slice(0, 40);
+
+                if (!cleaned) {
+                    cleaned = 'key_' + Math.random().toString(36).slice(2, 8);
+                }
+                return cleaned;
+            }
+
+
+            function sanitizeNumeric(val) {
+                return Number.isFinite(val) ? val : 0;
             }
 
             function sanitizeObjectKeys(obj) {
                 const out = {};
                 Object.keys(obj || {}).forEach(k => {
                     const safeKey = sanitizeKey(k);
-                    out[safeKey] = obj[k];
+                    out[safeKey] = sanitizeNumeric(obj[k]);
                 });
                 return out;
             }
+
 
             // 3D carousel placement
             const carouselImgs = document.querySelectorAll(".carousel-img");
@@ -1565,82 +1827,171 @@ a:focus {
 
             rotateCarousel();
 
-            // --- Cute mini-game: Catch My Heart ---
-const gameArea   = document.getElementById("game-area");
-const gameHeart  = document.getElementById("game-heart");
-const gameTimer  = document.getElementById("game-timer");
-const gameResult = document.getElementById("game-result");
+            // --- New Mini-game: Fill My Heart Meter ---
+            const lgArea = document.getElementById("love-game-area");
+            const lgHeart = document.getElementById("love-game-heart");
+            const lgTimer = document.getElementById("love-game-timer");
+            const lgResult = document.getElementById("love-game-result");
+            const lgMeter = document.getElementById("love-game-meter");
 
-let clicks = 0;
-let timeLeft = 10;
-let gameInterval = null;
-let moveInterval = null;
-let gameStarted = false;
+            let lgClicks = 0;
+            let lgTimeLeft = 8;
+            let lgTimerInterval = null;
+            let lgMoveInterval = null;
+            let lgStarted = false;
+            const lgMaxClicksForFull = 15; // ~15 taps ≈ full meter
 
-function moveHeartRandom() {
-    const areaRect  = gameArea.getBoundingClientRect();
-    const heartRect = gameHeart.getBoundingClientRect();
+            function lgMoveHeartRandom() {
+                const areaRect = lgArea.getBoundingClientRect();
+                const heartRect = lgHeart.getBoundingClientRect();
 
-    const maxX = areaRect.width  - heartRect.width;
-    const maxY = areaRect.height - heartRect.height;
+                const maxX = areaRect.width - heartRect.width;
+                const maxY = areaRect.height - heartRect.height;
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+                const x = Math.random() * maxX;
+                const y = Math.random() * maxY;
 
-    gameHeart.style.left = x + "px";
-    gameHeart.style.top  = y + "px";
-}
+                lgHeart.style.left = x + "px";
+                lgHeart.style.top = y + "px";
+            }
 
-function startGameOnce() {
-    if (gameStarted) return;
-    gameStarted = true;
+            function lgStartGameOnce() {
+                if (lgStarted) return;
+                lgStarted = true;
 
-    clicks = 0;
-    timeLeft = 10;
-    gameResult.textContent = "";
-    gameTimer.textContent = "Time left: 10s";
+                lgClicks = 0;
+                lgTimeLeft = 8;
+                lgResult.textContent = "";
+                lgMeter.style.width = "0%";
+                lgTimer.textContent = "Time left: 8s";
 
-    moveHeartRandom();
+                lgMoveHeartRandom();
 
-    gameInterval = setInterval(() => {
-        timeLeft--;
-        gameTimer.textContent = "Time left: " + timeLeft + "s";
-        if (timeLeft <= 0) {
-            endGame();
-        }
-    }, 1000);
+                lgTimerInterval = setInterval(() => {
+                    lgTimeLeft--;
+                    lgTimer.textContent = "Time left: " + lgTimeLeft + "s";
+                    if (lgTimeLeft <= 0) {
+                        lgEndGame();
+                    }
+                }, 1000);
 
-    moveInterval = setInterval(moveHeartRandom, 700);
-}
+                lgMoveInterval = setInterval(lgMoveHeartRandom, 600);
+            }
 
-function endGame() {
-    clearInterval(gameInterval);
-    clearInterval(moveInterval);
+            function lgEndGame() {
+                clearInterval(lgTimerInterval);
+                clearInterval(lgMoveInterval);
 
-    gameHeart.disabled = true;
+                lgHeart.disabled = true;
 
-    if (clicks > 0) {
-        gameResult.textContent =
-            "Congratulations, gamer girl — you didn’t just catch the heart in the box, " +
-            "you also officially won mine. 💘";
-    } else {
-        gameResult.textContent =
-            "You missed the heart in the game, but you still won the real one — " +
-            "mine — just by being you. 💖";
-    }
-}
+                if (lgClicks >= lgMaxClicksForFull) {
+                    lgResult.textContent =
+                        "Congratulations, pro gamer — you maxed out the meter and also officially won my heart. 💘";
+                } else if (lgClicks > 0) {
+                    lgResult.textContent =
+                        "You didn’t fill the whole bar, but every tap still pushed my heart closer to yours. You win me anyway. 💖";
+                } else {
+                    lgResult.textContent =
+                        "You didn’t tap the heart… but plot twist: you already had mine, from the very beginning. 💗";
+                }
+            }
 
-// Start game on first heart tap
-gameHeart.addEventListener("click", () => {
-    if (!gameStarted) {
-        startGameOnce();
-    }
-    if (!gameHeart.disabled) {
-        clicks++;
-        // tiny visual tap
-        gameHeart.style.transform = "scale(0.9)";
-        setTimeout(() => gameHeart.style.transform = "scale(1)", 120);
-    }
-});
+            // Start game + handle taps
+            if (lgHeart) {
+                lgHeart.addEventListener("click", () => {
+                    if (!lgStarted) {
+                        lgStartGameOnce();
+                    }
+                    if (!lgHeart.disabled && lgTimeLeft > 0) {
+                        lgClicks++;
+
+                        // Update love meter
+                        const percent = Math.min(100, (lgClicks / lgMaxClicksForFull) * 100);
+                        lgMeter.style.width = percent + "%";
+
+                        // Tiny tap animation
+                        lgHeart.style.transform = "scale(0.9)";
+                        setTimeout(() => {
+                            lgHeart.style.transform = "scale(1)";
+                        }, 120);
+                    }
+                });
+            }
+
+            // --- Mini Game 2: Perfect Timing ---
+            const tBar = document.getElementById('timing-bar');
+            const tSweet = document.getElementById('timing-sweet');
+            const tHeart = document.getElementById('timing-heart');
+            const tBtn = document.getElementById('timing-btn');
+            const tResult = document.getElementById('timing-result');
+
+            let tAnimFrame = null;
+            let tDirection = 1;
+            let tPos = 0;          // 0..1 across the bar
+            let tRunning = false;
+
+            function timingAnimate() {
+                if (!tRunning) return;
+                // speed
+                tPos += 0.01 * tDirection;
+                if (tPos >= 1) { tPos = 1; tDirection = -1; }
+                if (tPos <= 0) { tPos = 0; tDirection = 1; }
+
+                const barWidth = tBar.clientWidth;
+                const x = tPos * barWidth;
+                tHeart.style.left = x + 'px';
+
+                tAnimFrame = requestAnimationFrame(timingAnimate);
+            }
+
+            function timingStart() {
+                if (tRunning) return;
+                tRunning = true;
+                tResult.textContent = "";
+                tBtn.textContent = "Stop the heart 💓";
+
+                // reset position and direction
+                tPos = 0;
+                tDirection = 1;
+                cancelAnimationFrame(tAnimFrame);
+                timingAnimate();
+            }
+
+            function timingStop() {
+                tRunning = false;
+                cancelAnimationFrame(tAnimFrame);
+
+                const sweetRect = tSweet.getBoundingClientRect();
+                const heartRect = tHeart.getBoundingClientRect();
+
+                const heartCenter = heartRect.left + heartRect.width / 2;
+                const sweetStart = sweetRect.left;
+                const sweetEnd = sweetRect.left + sweetRect.width;
+
+                let msg;
+                if (heartCenter >= sweetStart && heartCenter <= sweetEnd) {
+                    msg = "Perfect timing! You landed right in the sweet spot — exactly where my heart lives now, with you. 💘";
+                } else if (heartCenter >= sweetStart - sweetRect.width &&
+                    heartCenter <= sweetEnd + sweetRect.width) {
+                    msg = "Almost perfect! You brushed past the sweet spot — just like how you brushed past my life and somehow stayed. 💖";
+                } else {
+                    msg = "You missed the zone this time, but honestly? My heart has already stopped at your name anyway. 💗";
+                }
+
+                tResult.textContent = msg;
+                tBtn.textContent = "Play again 🔁";
+            }
+
+            // Button: first click = start, next click = stop, then restart
+            if (tBtn && tBar && tHeart && tSweet) {
+                tBtn.addEventListener('click', () => {
+                    if (!tRunning) {
+                        timingStart();
+                    } else {
+                        timingStop();
+                    }
+                });
+            }
+
 
         </script>
