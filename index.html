@@ -481,6 +481,26 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
+        /* Tiny tap animation for wish button */
+.wish-pressed {
+    transform: scale(0.92) translateY(1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.wish-tap-emoji {
+    position: absolute;
+    font-size: 1.4em;
+    pointer-events: none;
+    animation: wishTapFloat 0.5s ease-out forwards;
+}
+
+@keyframes wishTapFloat {
+    0%   { transform: translateY(0);   opacity: 1; }
+    100% { transform: translateY(-25px); opacity: 0; }
+}
+
+
         .love-letter {
             background: #fff;
             padding: 30px;
@@ -968,8 +988,28 @@
                         setTimeout(step, 80);
                     } else {
                         setTimeout(() => {
-                            wishBtn.click();
-                        }, 300);
+    // visual tap
+    wishBtn.classList.add('wish-pressed');
+
+    // optional little emoji tap above the button
+    const rect = wishBtn.getBoundingClientRect();
+    const tapEmoji = document.createElement('div');
+    tapEmoji.className = 'wish-tap-emoji';
+    tapEmoji.textContent = '✨';
+    tapEmoji.style.left = (rect.left + rect.width / 2) + 'px';
+    tapEmoji.style.top  = (rect.top - 10) + 'px';
+    document.body.appendChild(tapEmoji);
+    setTimeout(() => tapEmoji.remove(), 500);
+
+    // fire the real click
+    wishBtn.click();
+
+    // remove pressed state after animation
+    setTimeout(() => {
+        wishBtn.classList.remove('wish-pressed');
+    }, 300);
+}, 300);
+
                     }
                 }
                 step();
