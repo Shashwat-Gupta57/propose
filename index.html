@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Apoorva | Besties Forever</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Montserrat:wght@300;500&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <style>
+        :root {
+            --primary: #8d5524; 
+            --accent: #e0ac69;  
+            --bg: #fffcf2;      
+            --text: #3d2b1f;
+            --transition: 0.4s ease;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            transition: filter 1s ease;
+        }
+
+        .grayscale { filter: grayscale(100%) contrast(0.8); }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 { font-family: 'Dancing Script', cursive; font-size: 4rem; color: var(--primary); margin: 0; }
+        
+        .deep-note {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            line-height: 1.8;
+            text-align: center;
+            font-style: italic;
+            border: 1px solid var(--accent);
+        }
+
+        /* Games Section */
+        .game-section {
+            background: #f3ede0;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .mood-btn {
+            padding: 15px 30px;
+            font-family: 'Montserrat', sans-serif;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .sad-btn { background: #555; color: white; }
+        .happy-btn { background: var(--accent); color: white; }
+
+        /* Harkate Game */
+        #harkate-zone {
+            width: 100%;
+            height: 300px;
+            background: #fff;
+            border: 2px dashed var(--primary);
+            position: relative;
+            margin: 20px auto;
+            max-width: 600px;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .harkat-bubble {
+            position: absolute;
+            padding: 10px;
+            background: var(--accent);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 40px;
+        }
+
+        .gallery-item {
+            width: 100%; height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            filter: sepia(20%);
+            transition: 0.3s;
+        }
+        .gallery-item:hover { filter: sepia(0%); transform: scale(1.02); }
+
+        /* Final Buttons */
+        .decision-box {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .btn-group { position: relative; height: 100px; width: 300px; margin-top: 30px; }
+
+        .final-btn {
+            padding: 15px 40px;
+            font-weight: bold;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            transition: all 0.2s ease;
+        }
+
+        #yesBtn { background: #4CAF50; color: white; left: 0; }
+        #noBtn { background: #f44336; color: white; right: 0; }
+
+    </style>
+</head>
+<body id="mainBody">
+
+    <header>
+        <p style="letter-spacing: 5px; text-transform: uppercase;">A message from Shashwat</p>
+        <h1>Hey Apoorva Maurya</h1>
+        <div class="deep-note">
+            "I know I'm 5'8" and you're 5'5", but your patience is definitely 10 feet tall. 
+            It’s in my nature to do all those <strong>extreme harkate</strong>, and I know I don't say it often, 
+            but I care about everything that involves you. When you're sad, the world just doesn't feel right to me. 
+            Everything I do... please forgive it, it's just how I am, but I'm lucky to have a bestie like you."
+        </div>
+    </header>
+
+    <!-- Game 1: Mood Mirror -->
+    <section class="game-section">
+        <h2>Game 1: The Vibe Check</h2>
+        <p>Apoorva, how are you feeling right now?</p>
+        <button class="mood-btn sad-btn" onclick="setMood('sad')">Sad / Upset</button>
+        <button class="mood-btn happy-btn" onclick="setMood('happy')">Happy / Okay</button>
+        <p id="mood-text" style="margin-top: 20px; font-weight: 500; min-height: 24px;"></p>
+    </section>
+
+    <!-- Game 2: Harkate Tolerance -->
+    <section class="game-section" style="background: white;">
+        <h2>Game 2: The Harkate Stopper</h2>
+        <p>Shashwat is doing weird things! Click the bubbles to 'tolerate' them.</p>
+        <div id="harkate-zone"></div>
+        <p>Tolerated: <span id="score">0</span></p>
+    </section>
+
+    <!-- Gallery -->
+    <div class="gallery-grid">
+        <!-- Images 1-10 png, 11 jpg -->
+        <script>
+            for(let i=1; i<=10; i++) document.write(`<img src="res/image-${i}.png" class="gallery-item">`);
+        </script>
+        <img src="res/image-11.jpg" class="gallery-item">
+    </div>
+
+    <!-- Final Decision -->
+    <section class="decision-box">
+        <h2>Will you forgive your 5'8" bestie?</h2>
+        <p>(Think carefully, your 5'5" self is too nice to say no!)</p>
+        <div class="btn-group">
+            <button class="final-btn" id="yesBtn" onclick="forgiven()">Yes</button>
+            <button class="final-btn" id="noBtn" onmouseover="moveNo()">No</button>
+        </div>
+    </section>
+
+    <script>
+        // --- FIREBASE CONFIGURATION ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyBIyIXYNvVhJnSK58rB29K9n7SNnbaoqnc",
+            authDomain: "proposal-apoorva-sarvagy.firebaseapp.com",
+            databaseURL: "https://proposal-apoorva-sarvagy-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "proposal-apoorva-sarvagy",
+            storageBucket: "proposal-apoorva-sarvagy.firebasestorage.app",
+            messagingSenderId: "794226715688",
+            appId: "1:794226715688:web:284222db7af709b2cd591d",
+            measurementId: "G-BZ4R12MR9T"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        function logToFirebase(action, value) {
+            database.ref('responses/').push({
+                timestamp: Date.now(),
+                action: action,
+                value: value
+            });
+        }
+
+        // --- GAME 1 LOGIC ---
+        function setMood(status) {
+            const body = document.getElementById('mainBody');
+            const text = document.getElementById('mood-text');
+            logToFirebase("Mood Selected", status);
+
+            if(status === 'sad') {
+                body.classList.add('grayscale');
+                text.innerText = "See? When you're sad, my whole world loses its color. I hate it.";
+            } else {
+                body.classList.remove('grayscale');
+                text.innerText = "That's better! Keep that dusky glow shining. ✨";
+            }
+        }
+
+        // --- GAME 2 LOGIC ---
+        const zone = document.getElementById('harkate-zone');
+        const scoreDisplay = document.getElementById('score');
+        let score = 0;
+        const phrases = ["Extreme Bakchodi", "PJ Joke", "Annoying Song", "Random Harkat", "Overthinking", "Being 5'8"];
+
+        function createHarkat() {
+            const b = document.createElement('div');
+            b.className = 'harkat-bubble';
+            b.innerText = phrases[Math.floor(Math.random()*phrases.length)];
+            b.style.left = Math.random() * 80 + '%';
+            b.style.top = Math.random() * 80 + '%';
+            
+            b.onclick = () => {
+                score++;
+                scoreDisplay.innerText = score;
+                b.remove();
+                if(score === 10) logToFirebase("Harkate Score", "Reached 10");
+            };
+            zone.appendChild(b);
+            setTimeout(() => b.remove(), 2000);
+        }
+        setInterval(createHarkat, 1000);
+
+        // --- FINAL BUTTONS ---
+        function moveNo() {
+            const noBtn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - 150);
+            const y = Math.random() * (window.innerHeight - 150);
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+            logToFirebase("Interaction", "She tried to click NO");
+        }
+
+        function forgiven() {
+            logToFirebase("Final Decision", "FORGIVEN");
+            alert("Best decision ever! ❤️ You're the best bestie, Apoorva.");
+            document.body.innerHTML = `
+                <div style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; background:var(--bg); text-align:center;">
+                    <h1>Yay! Besties for life! 🤝</h1>
+                    <p>Shashwat is now officially forgiven (for the next 5 minutes).</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
