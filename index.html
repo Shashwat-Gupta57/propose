@@ -468,4 +468,354 @@
         const firebaseConfig = {
             apiKey: "AIzaSyBIyIXYNvVhJnSK58rB29K9n7SNnbaoqnc",
             authDomain: "proposal-apoorva-sarvagy.firebaseapp.com",
- 
+            databaseURL: "https://proposal-apoorva-sarvagy-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "proposal-apoorva-sarvagy",
+            storageBucket: "proposal-apoorva-sarvagy.firebasestorage.app",
+            messagingSenderId: "794226715688",
+            appId: "1:794226715688:web:284222db7af709b2cd591d",
+            measurementId: "G-BZ4R12MR9T"
+        };
+
+        // Smart Photo Path Generator (1-29 range support)
+        const getPhotoPath = (i) => {
+            let ext = 'png';
+            if (i === 11) ext = 'jpg';
+            else if (i >= 12) ext = 'jpeg';
+            return `res/photo-${i}.${ext}`;
+        };
+
+        // Fallback for missing images
+        const handleImgError = (img) => {
+            img.onerror = null; 
+            img.src = `https://picsum.photos/seed/${Math.random()}/200`;
+        };
+
+        // --- STATE ---
+        let db;
+        let sessionId = localStorage.getItem('apoorva_session') || "session_" + Date.now();
+        localStorage.setItem('apoorva_session', sessionId);
+
+        let sessionData = {
+            name: "Apoorva",
+            startTime: new Date().toLocaleString(),
+            mood: "Neutral",
+            harkateScore: 0,
+            sliders: { ego: 100, think: 100, harkat: 100 },
+            verdict: "Pending",
+            message: "",
+            noAttempts: 0
+        };
+
+        // --- INIT ---
+        window.onload = () => {
+            if (typeof firebase !== 'undefined') {
+                firebase.initializeApp(firebaseConfig);
+                db = firebase.database();
+                // Try to load existing session
+                db.ref('apology_responses/' + sessionId).once('value', (snap) => {
+                    if (snap.exists()) {
+                        sessionData = snap.val();
+                        document.getElementById('welcome-msg').innerText = "Welcome back, Bestie ❤️";
+                        restoreState();
+                    } else {
+                        syncData();
+                    }
+                });
+            }
+            lucide.createIcons();
+            initGallery();
+            initGames();
+            
+            // Set random hero image (1-29)
+            const heroIdx = Math.floor(Math.random() * 29) + 1;
+            document.getElementById('hero-photo').src = getPhotoPath(heroIdx);
+            document.getElementById('success-photo').src = getPhotoPath(heroIdx);
+        };
+
+        const syncData = () => {
+            if (db) db.ref('apology_responses/' + sessionId).set(sessionData);
+        };
+
+        const restoreState = () => {
+            if (sessionData.mood === 'Sad') setMood('Sad');
+            else if (sessionData.mood === 'Happy') setMood('Happy');
+            
+            if (sessionData.verdict === 'Forgiven') {
+                document.getElementById('yes-btn').innerText = "Forgiven (Again!)";
+            }
+        };
+
+        // --- THEME ---
+        const themeDots = document.querySelectorAll('.theme-dot');
+        themeDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                document.body.setAttribute('data-theme', dot.dataset.set);
+            });
+        });
+
+        // --- MOOD LOGIC ---
+        window.setMood = (mood) => {
+            sessionData.mood = mood;
+            syncData();
+            
+            const petContent = document.getElementById('pet-content');
+            const petText = document.getElementById('pet-text');
+            const petStage = document.getElementById('pet-stage');
+
+            if (mood === 'Sad') {
+                document.body.style.filter = "grayscale(100%) sepia(20%)";
+                petContent.innerText = "(｡•́︿•̀｡)";
+                petStage.classList.remove('pet-happy');
+                petStage.classList.add('pet-sad');
+                petText.innerText = "Oh no... I'm turning gray.";
+            } else {
+                document.body.style.filter = "none";
+                petContent.innerText = "✨(◕‿◕)✨";
+                petStage.classList.remove('pet-sad');
+                petStage.classList.add('pet-happy');
+                petText.innerText = "Yay! The colors are back!";
+                confetti({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
+            }
+        };
+
+        // --- GALLERY LOGIC ---
+        const initGallery = () => {
+            const grid = document.getElementById('gallery-grid');
+            // Show 6 random photos from pool of 29
+            const pool = Array.from({length: 29}, (_, i) => i + 1);
+            const indices = pool.sort(() => Math.random() - 0.5).slice(0, 6);
+            
+            indices.forEach(i => {
+                const div = document.createElement('div');
+                div.className = 'polaroid';
+                div.style.setProperty('--rot', (Math.random() * 10 - 5) + 'deg');
+                
+                const img = document.createElement('img');
+                img.src = getPhotoPath(i);
+                img.onerror = () => handleImgError(img);
+                
+                const caption = document.createElement('p');
+                caption.innerText = `Memory #${i}`;
+                
+                div.appendChild(img);
+                div.appendChild(caption);
+                grid.appendChild(div);
+            });
+        };
+
+        // --- GAME: SLIDERS ---
+        const sliders = document.querySelectorAll('.fix-slider');
+        const fixMsg = document.getElementById('fix-msg');
+        const msgs = ["Processing...", "Ego is stubborn...", "Trying to delete bad jokes...", "System Overload!", "Downloading personality patch..."];
+
+        sliders.forEach(s => {
+            s.addEventListener('input', (e) => {
+                document.getElementById(e.target.dataset.target).innerText = e.target.value + '%';
+                fixMsg.innerText = msgs[Math.floor(Math.random() * msgs.length)];
+                
+                // Update session
+                if(e.target.dataset.target === 'val-ego') sessionData.sliders.ego = e.target.value;
+                if(e.target.dataset.target === 'val-think') sessionData.sliders.think = e.target.value;
+                if(e.target.dataset.target === 'val-harkat') sessionData.sliders.harkat = e.target.value;
+            });
+            s.addEventListener('change', syncData);
+        });
+
+        // --- GAME: HARKATE ---
+        const harkateCanvas = document.getElementById('harkate-canvas');
+        const phrases = ["Bad Joke", "Sarcasm", "Late Reply", "Height Flex", "Logic Error"];
+        
+        setInterval(() => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerText = phrases[Math.floor(Math.random() * phrases.length)];
+            bubble.style.left = Math.random() * 80 + '%';
+            
+            bubble.onclick = (e) => {
+                e.stopPropagation();
+                sessionData.harkateScore++;
+                document.getElementById('harkate-score').innerText = sessionData.harkateScore;
+                syncData();
+                bubble.remove();
+            };
+            
+            harkateCanvas.appendChild(bubble);
+            setTimeout(() => bubble.remove(), 4000);
+        }, 1500);
+
+        // --- GAME: MEMORY MATCH ---
+        const initGames = () => {
+            const grid = document.getElementById('memory-grid');
+            // Pick 4 random photos for pairs
+            const pool = Array.from({length: 29}, (_, i) => i + 1);
+            const selection = pool.sort(() => Math.random() - 0.5).slice(0, 4);
+            let cards = [...selection, ...selection];
+            cards.sort(() => Math.random() - 0.5);
+            
+            let hasFlipped = false;
+            let lockBoard = false;
+            let firstCard, secondCard;
+
+            cards.forEach(val => {
+                const card = document.createElement('div');
+                card.className = 'memory-card';
+                card.dataset.framework = val;
+                
+                const front = document.createElement('div');
+                front.className = 'front';
+                const img = document.createElement('img');
+                img.src = getPhotoPath(val);
+                img.onerror = () => handleImgError(img);
+                front.appendChild(img);
+
+                const back = document.createElement('div');
+                back.className = 'back';
+                back.innerHTML = '<i data-lucide="heart"></i>';
+                
+                card.appendChild(front);
+                card.appendChild(back);
+                grid.appendChild(card);
+
+                card.addEventListener('click', function() {
+                    if (lockBoard) return;
+                    if (this === firstCard) return;
+
+                    this.classList.add('flipped');
+
+                    if (!hasFlipped) {
+                        hasFlipped = true;
+                        firstCard = this;
+                        return;
+                    }
+
+                    secondCard = this;
+                    checkForMatch();
+                });
+            });
+
+            function checkForMatch() {
+                let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
+                isMatch ? disableCards() : unflipCards();
+            }
+
+            function disableCards() {
+                firstCard.removeEventListener('click', null);
+                secondCard.removeEventListener('click', null);
+                resetBoard();
+                confetti({ particleCount: 20, spread: 40, origin: { y: 0.8 } });
+            }
+
+            function unflipCards() {
+                lockBoard = true;
+                setTimeout(() => {
+                    firstCard.classList.remove('flipped');
+                    secondCard.classList.remove('flipped');
+                    resetBoard();
+                }, 1000);
+            }
+
+            function resetBoard() {
+                [hasFlipped, lockBoard] = [false, false];
+                [firstCard, secondCard] = [null, null];
+            }
+        };
+
+        // --- EMOTIONAL ---
+        const compliments = [
+            "You are genuinely the kindest person I know.",
+            "Your patience is a superpower.",
+            "I'm lucky to call you my best friend.",
+            "You have the best smile (even if you hide it).",
+            "Dusk beauty queen!",
+            "Thank you for existing."
+        ];
+        
+        window.generateCompliment = () => {
+            const box = document.getElementById('compliment-area');
+            box.style.display = 'flex';
+            // Avoid same compliment twice
+            let next = compliments[Math.floor(Math.random() * compliments.length)];
+            while (next === box.innerText) {
+                next = compliments[Math.floor(Math.random() * compliments.length)];
+            }
+            box.innerText = next;
+            box.style.animation = 'none';
+            box.offsetHeight; /* trigger reflow */
+            box.style.animation = 'float 3s infinite ease-in-out';
+        };
+
+        window.saveMessage = () => {
+            const txt = document.getElementById('private-msg').value;
+            if (txt.trim()) {
+                sessionData.message = txt;
+                syncData();
+                alert("Message sent to Shashwat's heart (and Firebase) ❤️");
+                document.getElementById('private-msg').value = "";
+            }
+        };
+
+        // --- FINAL VERDICT ---
+        const noBtn = document.getElementById('no-btn');
+        let attempts = 0;
+
+        window.evolveNo = () => {
+            attempts++;
+            sessionData.noAttempts = attempts;
+            syncData();
+
+            if (attempts < 3) {
+                // Dodge
+                const x = (Math.random() - 0.5) * 200;
+                const y = (Math.random() - 0.5) * 100;
+                noBtn.style.transform = `translate(${x}px, ${y}px)`;
+            } else if (attempts === 3) {
+                noBtn.style.transform = 'translate(0,0)';
+                noBtn.innerHTML = "Maybe?";
+                noBtn.style.background = "#f4a261";
+            } else if (attempts === 4) {
+                noBtn.innerHTML = "Okay fine...";
+                noBtn.style.background = "#e9c46a";
+            } else {
+                noBtn.innerHTML = "Yes! (Idiot)";
+                noBtn.className = "btn btn-success";
+                noBtn.onclick = triggerSuccess;
+                noBtn.onmouseover = null;
+            }
+        };
+
+        window.triggerSuccess = () => {
+            sessionData.verdict = "Forgiven";
+            syncData();
+            
+            const overlay = document.getElementById('success-overlay');
+            overlay.classList.add('visible');
+            
+            // Confetti Explosion
+            const duration = 3000;
+            const end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: ['#b5838d', '#e5989b', '#ffb4a2']
+                });
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: ['#b5838d', '#e5989b', '#ffb4a2']
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        };
+
+    </script>
+</body>
+</html>
